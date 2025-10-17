@@ -1,0 +1,10 @@
+,Network_zones,CO_2_Cap_Zone_1,CO_2_Cap_Zone_2,CO_2_Cap_Zone_3,CO_2_Cap_Zone_4,CO_2_Cap_Zone_5,CO_2_Cap_Zone_6,CO_2_Cap_Zone_7,CO_2_Cap_Zone_8,CO_2_Cap_Zone_9,CO_2_Max_tons_MWh_1,CO_2_Max_tons_MWh_2,CO_2_Max_tons_MWh_3,CO_2_Max_tons_MWh_4,CO_2_Max_tons_MWh_5,CO_2_Max_tons_MWh_6,CO_2_Max_tons_MWh_7,CO_2_Max_tons_MWh_8,CO_2_Max_tons_MWh_9,CO_2_Max_Mtons_1,CO_2_Max_Mtons_2,CO_2_Max_Mtons_3,CO_2_Max_Mtons_4,CO_2_Max_Mtons_5,CO_2_Max_Mtons_6,CO_2_Max_Mtons_7,CO_2_Max_Mtons_8,CO_2_Max_Mtons_9
+PJM_AP,z1,1,0,0,0,0,0,0,0,0,0.05,0,0,0,0,0,0,0,0,0.025,0,0,0,0,0,0,0,0
+PJM_ATSI,z2,0,1,0,0,0,0,0,0,0,0,0.05,0,0,0,0,0,0,0,0,0.025,0,0,0,0,0,0,0
+PJM_COMD,z3,0,0,1,0,0,0,0,0,0,0,0,0.05,0,0,0,0,0,0,0,0,0.025,0,0,0,0,0,0
+PJM_Dom,z4,0,0,0,1,0,0,0,0,0,0,0,0,0.05,0,0,0,0,0,0,0,0,0.025,0,0,0,0,0
+PJM_EMAC,z5,0,0,0,0,1,0,0,0,0,0,0,0,0,0.05,0,0,0,0,0,0,0,0,0.025,0,0,0,0
+PJM_PENE,z6,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0.05,0,0,0,0,0,0,0,0,0.025,0,0,0
+PJM_SMAC,z7,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0.05,0,0,0,0,0,0,0,0,0.025,0,0
+PJM_WMAC,z8,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0.05,0,0,0,0,0,0,0,0,0.025,0
+PJM_West,z9,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0.05,0,0,0,0,0,0,0,0,0.025

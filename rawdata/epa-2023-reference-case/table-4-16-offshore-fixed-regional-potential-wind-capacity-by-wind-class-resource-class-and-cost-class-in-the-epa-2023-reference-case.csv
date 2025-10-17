@@ -1,0 +1,35 @@
+IPM Region,State,Wind Class,Resource Class,Cost Class 1,Cost Class 2,Cost Class 3,Cost Class 4,Cost Class 5,Cost Class 6
+ERC_REST,TX,Class 5,6,2976,693,,,,
+ERC_REST,TX,Class 6,5,2622,3245,3035,3052,3004,4243
+FRCC,FL,Class 6,5,2900,3091,2636,3362,2810,9172
+MIS_AMSO,LA,Class 6,5,885,909,858,900,920,12957
+MIS_LA,LA,Class 6,5,31,,,,,
+MIS_LMI,MI,Class 2,7,154,,,,,
+MIS_WOTA,LA,Class 6,5,871,922,903,903,875,36861
+MIS_WOTA,TX,Class 6,5,519,1038,1038,781,1049,15042
+MIS_WUMS,MI,Class 3,7,237,,,,,
+MIS_WUMS,WI,Class 4,6,0,,,,,
+NENG_ME,ME,Class 1,8,12,,,,,
+NENGREST,MA,Class 1,8,1418,2118,4236,2118,2118,8708
+NENGREST,RI,Class 1,8,14,,,,,
+NY_Z_K,NY,Class 1,8,165,,,,,
+NY_Z_K,NY,Class 2,7,685,212,,,,
+PJM_ATSI,OH,Class 3,7,1560,1606,1491,,,
+PJM_Dom,NC,Class 2,7,2597,2545,841,,,
+PJM_Dom,VA,Class 2,7,2390,1022,,,,
+PJM_Dom,VA,Class 4,6,2,,,,,
+PJM_EMAC,DE,Class 1,8,2894,,,,,
+PJM_EMAC,DE,Class 2,7,2987,274,,,,
+PJM_EMAC,MD,Class 2,7,2423,,,,,
+PJM_EMAC,NJ,Class 1,8,2945,3010,3004,2922,,
+PJM_EMAC,NJ,Class 2,7,2968,2475,,,,
+PJM_EMAC,VA,Class 2,7,2983,3014,14,,,
+S_SOU,AL,Class 6,5,2950,3040,983,,,
+S_SOU,FL,Class 6,5,29,,,,,
+S_SOU,GA,Class 6,5,2980,3020,357,,,
+S_SOU,MS,Class 6,5,2435,,,,,
+S_VACA,NC,Class 3,7,2971,2393,,,,
+S_VACA,NC,Class 5,6,2767,2645,3586,2307,,
+S_VACA,SC,Class 5,6,2647,2885,3299,2978,3162,20234
+S_VACA,SC,Class 6,5,2957,2996,,,,
+Note: Resource potential depleted to account for the NEEDS capacity built in 2021 - 2028 by IPM Region & State.,,,,,,,,,

@@ -1,0 +1,57 @@
+Technology,Size (MW),First Year Available,Lead Time (Years),Availability,Generation Capability,Vintage Year,Heat Rate (Btu/kWh),Capital (2022$/kW),Fixed O&M (2022$/kW/yr),Variable O&M (2022$/MWh)
+Geothermal,50,2028,4,80% - 90%,Economic Dispatch,2028-2055,"30,000","3,862 - 46,811","114 - 1,208",0
+Biomass,50,2028,4,83%,Economic Dispatch,2028,"13,500","4,201",141.5,5.44
+Biomass,50,2028,4,83%,Economic Dispatch,2030,"13,500","4,121",141.5,5.44
+Biomass,50,2028,4,83%,Economic Dispatch,2035,"13,500","3,921",141.5,5.44
+Biomass,50,2028,4,83%,Economic Dispatch,2040,"13,500","3,715",141.5,5.44
+Biomass,50,2028,4,83%,Economic Dispatch,2045,"13,500","3,500",141.5,5.44
+Biomass,50,2028,4,83%,Economic Dispatch,2050-2055,"13,500","3,284",141.5,5.44
+Landfill Gas LGHI,10,2028,3,90%,Economic Dispatch,2028,"8,513","1,707",21.82,6.73
+Landfill Gas LGHI,10,2028,3,90%,Economic Dispatch,2030,"8,513","1,659",21.82,6.73
+Landfill Gas LGHI,10,2028,3,90%,Economic Dispatch,2035,"8,513","1,544",21.82,6.73
+Landfill Gas LGHI,10,2028,3,90%,Economic Dispatch,2040,"8,513","1,449",21.82,6.73
+Landfill Gas LGHI,10,2028,3,90%,Economic Dispatch,2045,"8,513","1,361",21.82,6.73
+Landfill Gas LGHI,10,2028,3,90%,Economic Dispatch,2050-2055,"8,513","1,268",21.82,6.73
+Fuel Cells,10,2028,3,87%,Economic Dispatch,2028,"6,469","1,065",34.65,0.66
+Fuel Cells,10,2028,3,87%,Economic Dispatch,2030,"6,469","1,005",34.65,0.66
+Fuel Cells,10,2028,3,87%,Economic Dispatch,2035,"6,469",856,34.65,0.66
+Fuel Cells,10,2028,3,87%,Economic Dispatch,2040,"6,469",788,34.65,0.66
+Fuel Cells,10,2028,3,87%,Economic Dispatch,2045,"6,469",721,34.65,0.66
+Fuel Cells,10,2028,3,87%,Economic Dispatch,2050-2055,"6,469",653,34.65,0.66
+Solar Photovoltaic,100,2028,1,90%,Generation Profile,2028,0,"1,065",19.08,0
+Solar Photovoltaic,100,2028,1,90%,Generation Profile,2030,0,"1,005",18.37,0
+Solar Photovoltaic,100,2028,1,90%,Generation Profile,2035,0,856,16.6,0
+Solar Photovoltaic,100,2028,1,90%,Generation Profile,2040,0,788,15.88,0
+Solar Photovoltaic,100,2028,1,90%,Generation Profile,2045,0,721,15.16,0
+Solar Photovoltaic,100,2028,1,90%,Generation Profile,2050-2055,0,653,14.44,0
+Solar Thermal,115,2028,3,90%,Economic Dispatch,2028,0,"5,594",59.54,3.37
+Solar Thermal,115,2028,3,90%,Economic Dispatch,2030,0,"5,107",55.43,3.21
+Solar Thermal,115,2028,3,90%,Economic Dispatch,2035,0,"4,925",55.43,3.21
+Solar Thermal,115,2028,3,90%,Economic Dispatch,2040,0,"4,743",55.43,3.21
+Solar Thermal,115,2028,3,90%,Economic Dispatch,2045,0,"4,560",55.43,3.21
+Solar Thermal,115,2028,3,90%,Economic Dispatch,2050-2055,0,"4,378",55.43,3.21
+Onshore Wind,200,2028,3,95%,Generation Profile,2028,0,"1,206",29.66,0
+Onshore Wind,200,2028,3,95%,Generation Profile,2030,0,"1,159",28.88,0
+Onshore Wind,200,2028,3,95%,Generation Profile,2035,0,"1,102",27.89,0
+Onshore Wind,200,2028,3,95%,Generation Profile,2040,0,"1,044",26.9,0
+Onshore Wind,200,2028,3,95%,Generation Profile,2045,0,987,25.91,0
+Onshore Wind,200,2028,3,95%,Generation Profile,2050-2055,0,930,24.92,0
+Offshore Wind,1000,2028,3,95%,Generation Profile,2028,0,"1,979",96.04,0
+Offshore Wind,1000,2028,3,95%,Generation Profile,2030,0,"1,923",92.95,0
+Offshore Wind,1000,2028,3,95%,Generation Profile,2035,0,"1,818",86.93,0
+Offshore Wind,1000,2028,3,95%,Generation Profile,2040,0,"1,742",82.4,0
+Offshore Wind,1000,2028,3,95%,Generation Profile,2045,0,"1,683",78.76,0
+Offshore Wind,1000,2028,3,95%,Generation Profile,2050-2055,0,"1,634",75.72,0
+Battery Storage (4 Hours),60,2028,1,96.40%,Economic Dispatch,2028,0,960,34.59,0
+Battery Storage (4 Hours),60,2028,1,96.40%,Economic Dispatch,2030,0,891,32.11,0
+Battery Storage (4 Hours),60,2028,1,96.40%,Economic Dispatch,2035,0,823,29.64,0
+Battery Storage (4 Hours),60,2028,1,96.40%,Economic Dispatch,2040,0,754,27.16,0
+Battery Storage (4 Hours),60,2028,1,96.40%,Economic Dispatch,2045,0,685,24.68,0
+Battery Storage (4 Hours),60,2028,1,96.40%,Economic Dispatch,2050-2055,0,617,22.21,0
+Battery Storage (10 Hours),60,2028,1,96.40%,Economic Dispatch,2028,0,"2,077",74.82,0
+Battery Storage (10 Hours),60,2028,1,96.40%,Economic Dispatch,2030,0,"1,902",68.52,0
+Battery Storage (10 Hours),60,2028,1,96.40%,Economic Dispatch,2035,0,"1,741",62.74,0
+Battery Storage (10 Hours),60,2028,1,96.40%,Economic Dispatch,2040,0,"1,581",56.97,0
+Battery Storage (10 Hours),60,2028,1,96.40%,Economic Dispatch,2045,0,"1,422",51.23,0
+Battery Storage (10 Hours),60,2028,1,96.40%,Economic Dispatch,2050-2055,0,"1,263",45.51,0
+"Note: The capital costs for the landfill gas units at low, and very low methane producing sites are assumed to be 26% and 94% higher than the capital costs for the landfill gas units at high methane producing sites. The capital costs for solar PV units in 2028 are from the ATB 2023 advanced case, and the capital costs starting in 2035 are from the ATB 2023 moderate case. The capital costs in 2030 are linearly interpolated. The capital costs and FOM of energy storage units are based on the AEO 2023 estimate for 2023 and are adjusted in future years based on the trend underlying the ATB 2023 moderate case assumptions",,,,,,,,,,
