@@ -1,0 +1,112 @@
+Name,Planned (MW),Operating (MW),In Construction (MW),Operating and In Construction (MW),Total (MW),Region Name
+"Manassas city, VA",25,30,50,80,105,PJM_Dom
+"St. Joseph County, IN",401,6.55,790.6,797.15,1198.15,PJM_West
+"Greensville County, VA",120,0,0,0,120,PJM_Dom
+"Montgomery County, OH",5,6.7,0,6.7,11.7,PJM_West
+"Franklin County, OH",483,1069.4,188,1257.4,1740.4,PJM_West
+"Hamilton County, OH",0,29.61,0.3,29.91,29.91,PJM_West
+"Caroline County, VA",1120,0,70,70,1190,PJM_Dom
+"Fairfax County, VA",272.7,338.4,334,672.4,945.1,PJM_Dom
+"Spotsylvania County, VA",1538,0,388,388,1926,PJM_Dom
+"Stafford County, VA",1150,0,42,42,1192,PJM_Dom
+"Union County, NJ",0,0,40,40,40,PJM_EMAC
+"Allegheny County, PA",0,32.4,15,47.4,47.4,PJM_AP
+"Westmoreland County, PA",180,20,0,20,200,PJM_PENE
+"Burlington County, NJ",0,4,0,4,4,PJM_EMAC
+"Armstrong County, PA",70,1.5,30,31.5,101.5,PJM_PENE
+"Fauquier County, VA",1050,12,0,12,1062,PJM_Dom
+"Covington city, VA",0,0.5,0,0.5,0.5,PJM_Dom
+"Essex County, NJ",0,87.71,0,87.71,87.71,PJM_EMAC
+"McLean County, IL",0,1,0,1,1,PJM_COMD
+"Culpeper County, VA",2258,67.5,240,307.5,2565.5,PJM_Dom
+"Hanover County, VA",2415,1,0,1,2416,PJM_Dom
+"Washington County, OH",0,0,40,40,40,PJM_West
+"Frederick County, VA",0,6.9,0,6.9,6.9,PJM_AP
+"Wise County, VA",35,10,0,10,45,PJM_West
+"Powhatan County, VA",200,0,100,100,300,PJM_Dom
+"Chesterfield County, VA",610,44.8,50,94.8,704.8,PJM_Dom
+"Summit County, OH",0,3.5,0,3.5,3.5,PJM_ATSI
+"Butler County, OH",0,8.54,0,8.54,8.54,PJM_West
+"Cuyahoga County, OH",0,21.9,0,21.9,21.9,PJM_ATSI
+"Frederick County, MD",1749,0,231,231,1980,PJM_AP
+"Morris County, NJ",0,13,0,13,13,PJM_EMAC
+"Philadelphia County, PA",36,36.94,0,36.94,72.94,PJM_EMAC
+"Bergen County, NJ",0,18,0,18,18,PJM_EMAC
+"Harrisonburg city, VA",0,18,0,18,18,PJM_Dom
+"Hudson County, NJ",10,122.5,19.4,141.9,151.9,PJM_EMAC
+"Surry County, VA",280,0,20,20,300,PJM_Dom
+"Kane County, IL",0,0,20,20,20,PJM_COMD
+"Lucas County, OH",0,1.3,0,1.3,1.3,PJM_ATSI
+"Bucks County, PA",200,0,80,80,280,PJM_EMAC
+"Virginia Beach city, VA",130,8,0,8,138,PJM_Dom
+"Somerset County, NJ",10,62,0,62,72,PJM_EMAC
+"Putnam County, IL",82,0,0,0,82,PJM_COMD
+"Louisa County, VA",750,0,70,70,820,PJM_Dom
+"Mahoning County, OH",0,0.45,0,0.45,0.45,PJM_ATSI
+"Indiana County, PA",4500,0,0,0,4500,PJM_PENE
+"Cass County, MI",0,28,272,300,300,PJM_West
+"Lackawanna County, PA",780,0,0,0,780,PJM_WMAC
+"Cook County, IL",2001.8,917.13,561,1478.13,3479.93,PJM_COMD
+"Passaic County, NJ",0,25.05,0,25.05,25.05,PJM_EMAC
+"Oldham County, KY",600,0,0,0,600,PJM_West
+"Monroe County, OH",695,0,0,0,695,PJM_West
+"Tazewell County, IL",1000,0,0,0,1000,PJM_COMD
+"Monmouth County, NJ",0,10.6,0,10.6,10.6,PJM_EMAC
+"Pittsylvania County, VA",800,0,0,0,800,PJM_Dom
+"Montgomery County, PA",0,25.2,0,25.2,25.2,PJM_EMAC
+"Berks County, PA",0,7,0,7,7,PJM_WMAC
+"Covington city, VA",0,0.5,0,0.5,0.5,PJM_Dom
+"Baltimore city, MD",0,59.5,0,59.5,59.5,PJM_SMAC
+"King George County, VA",900,0,0,0,900,PJM_Dom
+"Luzerne County, PA",940,98,122,220,1160,PJM_WMAC
+"Licking County, OH",1601,601,413,1014,2615,PJM_West
+"DeKalb County, IL",360,260,60,320,680,PJM_COMD
+"Middlesex County, NJ",32,183.93,12,195.93,227.93,PJM_EMAC
+"Chesterfield County, VA",610,44.8,50,94.8,704.8,PJM_Dom
+"Prince William County, VA",5159,1675.4,1070,2745.4,7904.4,PJM_Dom
+"Delaware County, OH",67.5,10.5,0,10.5,78,PJM_West
+"Wise County, VA",35,10,0,10,45,PJM_West
+"Beaver County, PA",0,120,0,120,120,PJM_ATSI
+"Carbon County, PA",0,80,0,80,80,PJM_WMAC
+"Berrien County, MI",300,0,0,0,300,PJM_West
+"Fairfield County, OH",800,75,0,75,875,PJM_West
+"Clark County, OH",70,2,100,102,172,PJM_ATSI
+"Kendall County, IL",3103,0,40,40,3143,PJM_COMD
+"Allen County, IN",300,0,0,0,300,PJM_West
+"Union County, OH",140,250,80,330,470,PJM_ATSI
+"Warren County, OH",0,13.7,0,13.7,13.7,PJM_West
+"Stark County, OH",0,1.5,221,222.5,222.5,PJM_ATSI
+"Fairfax County, VA",272.7,338.4,334,672.4,945.1,PJM_Dom
+"Perry County, OH",26,24,0,24,50,PJM_West
+"Norfolk city, VA",0,0.75,0,0.75,0.75,PJM_Dom
+"Erie County, OH",190,0,96,96,286,PJM_ATSI
+"Orange County, VA",600,0,0,0,600,PJM_AP
+"Cumberland County, NJ",550,0,50,50,600,PJM_EMAC
+"Butler County, PA",24.5,15.75,0,15.75,40.25,PJM_AP
+"Lake County, IL",420,0,60,60,480,PJM_COMD
+"Lehigh County, PA",0,12.35,0,12.35,12.35,PJM_WMAC
+"Sussex County, VA",600,0,0,0,600,PJM_Dom
+"Boone County, KY",0,4,0,4,4,PJM_West
+"Prince William County, VA",5159,1675.4,1070,2745.4,7904.4,PJM_Dom
+"Mercer County, NJ",0,28,0,28,28,PJM_EMAC
+"DuPage County, IL",146,314.85,191,505.85,651.85,PJM_COMD
+"Venango County, PA",0,83.5,0,83.5,83.5,PJM_PENE
+"Gloucester County, NJ",47.5,0,13.3,13.3,60.8,PJM_EMAC
+"District of Columbia, DC",0,10.04,0,10.04,10.04,PJM_SMAC
+"Salem County, NJ",200,0,100,100,300,PJM_EMAC
+"Wood County, OH",40,0,40,40,80,PJM_ATSI
+"Mecklenburg County, VA",502.5,741.5,278,1019.5,1522,PJM_Dom
+"Charles City County, VA",424,0,0,0,424,PJM_Dom
+"Baltimore County, MD",0,1.2,0,1.2,1.2,PJM_SMAC
+"Loudoun County, VA",6349.4,5333.67,596,5929.67,12279.07,PJM_Dom
+"Montgomery County, MD",0,8.7,0,8.7,8.7,PJM_SMAC
+"New Castle County, DE",2,7,0,7,9,PJM_EMAC
+"Anne Arundel County, MD",0,3.25,0,3.25,3.25,PJM_SMAC
+"Lancaster County, PA",0,0.5,0,0.5,0.5,PJM_EMAC
+"Mercer County, PA",0,150,90,240,240,PJM_ATSI
+"Chester County, PA",450,5,0,5,455,PJM_EMAC
+"Prince Edward County, VA",300,0,0,0,300,PJM_Dom
+"Northampton County, PA",0,4,0,4,4,PJM_WMAC
+"Prince George's County, MD",834,2,20,22,856,PJM_SMAC
+"Dauphin County, PA",0,0.4,0,0.4,0.4,PJM_WMAC
+"Appomattox County, VA",250,0,50,50,300,PJM_Dom
