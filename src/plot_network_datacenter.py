@@ -16,12 +16,18 @@ from matplotlib.colors import ListedColormap
 from matplotlib import cm
 from pathlib import Path
 from matplotlib import patheffects as pe
-# --- MODIFICATION: Import Patch for creating the color legend ---
 from matplotlib.patches import Patch
 
 # --- CONFIGURATION ---
 # Simply change this prefix to generate a map for a different region (e.g., "PJM", "NY")
 REGION_PREFIX = "PJM"
+
+# --- NEW SETTING ---
+# Choose which data center capacity to plot.
+# Options: "Planned", "Operating", "In Construction", "Planned + In Construction", "Total"
+DC_CAPACITY_TO_PLOT = "Planned + In Construction"
+# --- END NEW SETTING ---
+
 
 def generate_colormap(N):
     """Generates a visually distinct colormap for N categories."""
@@ -52,6 +58,89 @@ us_counties = us_counties[~us_counties["STATEFP"].isin(states2drop_fp)]
 epa_ipm_shape_path = Path(Path.cwd(), "rawdata", "epa-2023-reference-case", "ipm_v6_regions.zip")
 epa = gpd.read_file(epa_ipm_shape_path, crs="EPSG:4326")
 epa = epa.to_crs(us_states.crs)
+
+# --- 1b. LOAD AND PROCESS DATA CENTER DATA ---
+print("Loading and processing data center data...")
+dc_data_path = Path(Path.cwd(), "data", "load_datacenter_all.csv")
+dc_plot_gdf = None
+dc_legend_title = "Data Center Capacity" # Default title
+
+try:
+    dc_df = pd.read_csv(dc_data_path)
+    
+    # --- MODIFIED BLOCK: DYNAMIC CAPACITY SELECTION ---
+    # Check if required columns exist
+    required_cols = ["Planned (MW)", "Operating (MW)", "In Construction (MW)"]
+    if not all(col in dc_df.columns for col in required_cols):
+        raise Exception(f"CSV missing one or more required columns: {required_cols}")
+
+    if DC_CAPACITY_TO_PLOT == "Planned":
+        col_to_use = "Planned (MW)"
+        dc_legend_title = "Data Center Capacity (Planned)"
+    elif DC_CAPACITY_TO_PLOT == "Operating":
+        col_to_use = "Operating (MW)"
+        dc_legend_title = "Data Center Capacity (Operating)"
+    elif DC_CAPACITY_TO_PLOT == "In Construction":
+        col_to_use = "In Construction (MW)"
+        dc_legend_title = "Data Center Capacity (In Construction)"
+    elif DC_CAPACITY_TO_PLOT == "Total":
+        col_to_use = "Total (MW)"
+        dc_legend_title = "Data Center Capacity (Total)"
+    elif DC_CAPACITY_TO_PLOT == "Planned + In Construction":
+        # Create the sum column. Ensure NaNs are treated as 0 for summation.
+        dc_df['Planned + In Construction (MW)'] = dc_df['Planned (MW)'].fillna(0) + dc_df['In Construction (MW)'].fillna(0)
+        col_to_use = "Planned + In Construction (MW)"
+        dc_legend_title = "Data Center Capacity (Planned + In Construction)"
+    else:
+        print(f"Warning: Invalid DC_CAPACITY_TO_PLOT setting '{DC_CAPACITY_TO_PLOT}'. Defaulting to 'Planned (MW)'.")
+        col_to_use = "Planned (MW)"
+        dc_legend_title = "Data Center Capacity (Planned)"
+    
+    print(f"Using column '{col_to_use}' for data center capacity.")
+    # --- END MODIFIED BLOCK ---
+
+    dc_df[['County_Name_Raw', 'State_Abbr']] = dc_df['Name'].str.split(',', expand=True, n=1)
+    dc_df['County_Name_Clean'] = dc_df['County_Name_Raw'].str.replace(r' County| Parish| Census Area| Borough', '', regex=True).str.strip()
+    dc_df['State_Abbr'] = dc_df['State_Abbr'].str.strip()
+
+    state_abbr_to_fp = us_states.set_index('STUSPS')['STATEFP']
+    dc_df['STATEFP'] = dc_df['State_Abbr'].map(state_abbr_to_fp)
+
+    dc_gdf = us_counties.merge(
+        dc_df,
+        left_on=['NAME', 'STATEFP'],
+        right_on=['County_Name_Clean', 'STATEFP']
+    )
+
+    # --- MODIFICATION: Use dynamic column for filtering ---
+    dc_gdf = dc_gdf[dc_gdf[col_to_use] > 0].copy()
+    dc_gdf['centroid'] = dc_gdf.geometry.centroid
+
+    # Define bins, labels, colors, and sizes for plotting
+    # You might want to adjust these bins depending on the data you select
+    dc_bins = [0, 500, 1500, 3500, np.inf]
+    dc_labels = ['0 - 500', '500 - 1500', '1500 - 3500', '> 3500']
+    dc_colors = ['#f59e0b', '#ef4444', '#b91c1c', '#7f1d1d']
+    dc_sizes = [40, 120, 250, 450] # Sizes for main map
+
+    # --- MODIFICATION: Use dynamic column for binning ---
+    dc_gdf['mw_category'] = pd.cut(
+        dc_gdf[col_to_use],
+        bins=dc_bins,
+        labels=dc_labels,
+        right=False
+    )
+    
+    dc_gdf.dropna(subset=['mw_category'], inplace=True)
+    
+    dc_plot_gdf = gpd.GeoDataFrame(dc_gdf, geometry='centroid')
+    print(f"Successfully processed {len(dc_plot_gdf)} data center locations to plot.")
+
+except FileNotFoundError:
+    print(f"Data center file not found at: {dc_data_path}. Skipping data center plotting.")
+except Exception as e:
+    print(f"An error occurred processing data center data: {e}. Skipping data center plotting.")
+
 
 # --- 2. PREPARE TRANSMISSION DATA ---
 print("Processing transmission capacity data...")
@@ -127,14 +216,42 @@ for idx, row in epa_trans_limits_symmetric.iterrows():
 nodes_gdf = gpd.GeoDataFrame(epa_centroid.drop(columns='geometry'), geometry=epa_centroid['CENTROID'])
 nodes_gdf.plot(ax=ax_main, color='black', markersize=25, edgecolor='white', linewidth=0.5, zorder=15)
 
-# --- Set up legend and title for the TOP axes (ax_main) ---
+# --- Plot data center capacities on MAIN map ---
+if dc_plot_gdf is not None:
+    print("Plotting data center capacities...")
+    for label, color, size in zip(dc_labels, dc_colors, dc_sizes):
+        subset_gdf = dc_plot_gdf[dc_plot_gdf['mw_category'] == label]
+        if not subset_gdf.empty:
+            subset_gdf.plot(
+                ax=ax_main,
+                color=color,
+                markersize=size,
+                edgecolor='white',
+                linewidth=0.5,
+                alpha=0.8,
+                zorder=16
+            )
+
+# --- Set up separate legends for lines and data centers ---
 legend_elements = [
     Line2D([0], [0], color='green', lw=3, label=f'Internal Lines ({REGION_PREFIX})'),
     Line2D([0], [0], color='red', lw=3, label='Interface Lines'),
     Line2D([0], [0], color='grey', lw=3, label='External Lines'),
     Line2D([0], [0], marker='o', color='w', label='Region Node', markerfacecolor='black', markeredgecolor='white', markersize=8)
 ]
-ax_main.legend(handles=legend_elements, loc='lower right', title='Map Legend')
+line_legend = ax_main.legend(handles=legend_elements, loc='lower right', title='Transmission Legend')
+ax_main.add_artist(line_legend)
+
+if dc_plot_gdf is not None:
+    dc_legend_handles = [
+        Line2D([0], [0], marker='o', color='w', label=f'{dc_labels[i]} MW',
+               markerfacecolor=dc_colors[i], markeredgecolor='k', 
+               markersize=6 + i*2)
+        for i in range(len(dc_labels))
+    ]
+    # --- MODIFICATION: Use dynamic legend title ---
+    ax_main.legend(handles=dc_legend_handles, loc='lower left', title=dc_legend_title)
+
 ax_main.set_title("National View", loc="center")
 ax_main.set_axis_off()
 
@@ -142,12 +259,23 @@ ax_main.set_axis_off()
 print(f"Creating {REGION_PREFIX} inset plot...")
 inset_regions = epa[epa['IPM_Region'].str.startswith(REGION_PREFIX)].copy()
 inset_lines = epa_trans_limits_symmetric[epa_trans_limits_symmetric['line_type'] == 'internal']
-# --- MODIFICATION: Filter for interface lines connected to the inset region ---
 interface_lines_for_inset = epa_trans_limits_symmetric[
     (epa_trans_limits_symmetric['line_type'] == 'interface') &
     (epa_trans_limits_symmetric['From'].str.startswith(REGION_PREFIX) | epa_trans_limits_symmetric['To'].str.startswith(REGION_PREFIX))
 ]
 inset_nodes = nodes_gdf[nodes_gdf['IPM_Region'].str.startswith(REGION_PREFIX)]
+
+# --- Filter data centers for the inset ---
+dc_inset_gdf = None
+if dc_plot_gdf is not None:
+    try:
+        # Spatially join data center points with the inset region polygons
+        dc_inset_gdf = gpd.sjoin(dc_plot_gdf, inset_regions[['geometry']], how='inner', predicate='within')
+        if not dc_inset_gdf.empty:
+            print(f"Found {len(dc_inset_gdf)} data centers within {REGION_PREFIX} region.")
+    except Exception as e:
+        print(f"Error filtering data centers for inset: {e}")
+        dc_inset_gdf = None
 
 inset_boundary = inset_regions.unary_union
 inset_states = gpd.clip(us_states, inset_boundary)
@@ -182,8 +310,8 @@ for idx, row in inset_lines.iterrows():
         line = Line2D([from_point.x, to_point.x], [from_point.y, to_point.y], linewidth=row["linewidth"], solid_capstyle='round', **line_style)
         ax_inset.add_line(line)
 
-# --- MODIFICATION: Plot INTERFACE (red) lines and prepare for external state labels ---
-external_connection_points = {} # To store unique external points for labeling
+# Plot INTERFACE (red) lines and prepare for external state labels
+external_connection_points = {}
 for idx, row in interface_lines_for_inset.iterrows():
     from_point, to_point = row["FROM_CENTROID"], row["TO_CENTROID"]
     line_style = style_map.get('interface')
@@ -191,24 +319,21 @@ for idx, row in interface_lines_for_inset.iterrows():
         line = Line2D([from_point.x, to_point.x], [from_point.y, to_point.y], linewidth=row["linewidth"], solid_capstyle='round', **line_style)
         ax_inset.add_line(line)
         
-        # Identify the external point and region name
         if row['From'].strip().startswith(REGION_PREFIX):
             external_point, external_region_name = to_point, row['To']
         else:
             external_point, external_region_name = from_point, row['From']
         
-        # Store unique external points to avoid duplicate labels
         if external_region_name not in external_connection_points:
             external_connection_points[external_region_name] = external_point
 
-# --- MODIFICATION: Add labels for states connected via interface lines ---
+# Add labels for states connected via interface lines
 if external_connection_points:
     external_nodes_df = pd.DataFrame(list(external_connection_points.items()), columns=['IPM_Region', 'geometry'])
     external_nodes_gdf = gpd.GeoDataFrame(external_nodes_df, geometry='geometry', crs=us_states.crs)
 
-    # Find which state each external node is in
     external_states_info = gpd.sjoin(external_nodes_gdf, us_states[['STUSPS', 'geometry']], how='left', predicate='within')
-    external_states_info.drop_duplicates(subset='STUSPS', inplace=True) # Label each state only once
+    external_states_info.drop_duplicates(subset='STUSPS', inplace=True) 
 
     for idx, row in external_states_info.iterrows():
         point, state_abbr = row.geometry, row['STUSPS']
@@ -220,7 +345,23 @@ if external_connection_points:
 
 inset_nodes.plot(ax=ax_inset, color='black', markersize=25, edgecolor='white', linewidth=0.5, zorder=15)
 
-# --- MODIFICATION: Add a legend for the IPM region colors to the inset plot ---
+# --- Plot data center capacities on INSET ---
+if dc_inset_gdf is not None and not dc_inset_gdf.empty:
+    print("Plotting data center capacities on inset...")
+    for label, color, size in zip(dc_labels, dc_colors, dc_sizes):
+        subset_gdf = dc_inset_gdf[dc_inset_gdf['mw_category'] == label]
+        if not subset_gdf.empty:
+            subset_gdf.plot(
+                ax=ax_inset,
+                color=color,
+                markersize=size, 
+                edgecolor='white',
+                linewidth=0.5,
+                alpha=0.8,
+                zorder=16 
+            )
+
+# Add a legend for the IPM region colors to the inset plot
 inset_region_names = sorted(inset_regions['IPM_Region'].unique())
 region_legend_elements = [Patch(facecolor=color_map_dict[name], edgecolor='black', label=name)
                           for name in inset_region_names]
@@ -228,7 +369,7 @@ ax_inset.legend(handles=region_legend_elements,
                 loc='upper left',
                 title=f'{REGION_PREFIX} Regions',
                 fontsize='medium',
-                bbox_to_anchor=(1.02, 1), # Place legend outside the plot area
+                bbox_to_anchor=(1.02, 1),
                 borderaxespad=0.)
 
 bounds = inset_regions.total_bounds
@@ -243,11 +384,17 @@ for spine in ax_inset.spines.values():
     spine.set_linewidth(1.0)
 
 # --- Final plot adjustments ---
-# --- MODIFICATION: Adjust layout to make space for the new legend and reduce top whitespace ---
 plt.tight_layout(rect=[0, 0, 0.85, 0.95])
 
 # --- Save the figure ---
-output_path = Path(Path.cwd(), f"epa_ipm_trans_limits_{REGION_PREFIX}.png")
+output_dir = Path(Path.cwd(), "figures")
+output_dir.mkdir(parents=True, exist_ok=True)
+
+# --- MODIFICATION: Create a dynamic output filename ---
+# Create a "safe" string for the filename from the capacity choice
+safe_capacity_name = DC_CAPACITY_TO_PLOT.lower().replace(" ", "_").replace("+", "plus")
+output_path = output_dir / f"epa_ipm_trans_limits_{REGION_PREFIX}_dc_{safe_capacity_name}.png"
+
 plt.savefig(output_path, dpi=300, bbox_inches='tight', pad_inches=0.1, facecolor='w')
 print(f"\nPlot saved successfully to:\n{output_path}")
 
