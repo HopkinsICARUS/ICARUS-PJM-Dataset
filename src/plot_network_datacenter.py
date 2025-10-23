@@ -24,7 +24,7 @@ REGION_PREFIX = "PJM"
 
 # --- NEW SETTING ---
 # Choose which data center capacity to plot.
-# Options: "Planned", "Operating", "In Construction", "Planned + In Construction", "Total"
+# Options: "Operating", "In Construction", "Planned", "Planned + In Construction", "Total"
 DC_CAPACITY_TO_PLOT = "Planned + In Construction"
 # --- END NEW SETTING ---
 
@@ -197,7 +197,7 @@ fig, (ax_main, ax_inset) = plt.subplots(
     figsize=(12, 18),
     gridspec_kw={'height_ratios': [3, 2]}
 )
-fig.suptitle(f"US Transmission Capacity Map with {REGION_PREFIX} Inset", fontsize=16)
+fig.suptitle(f"US Transmission and Data Center Load Capacity Map with {REGION_PREFIX} Inset", fontsize=16)
 
 # --- Plot basemap on the TOP axes (ax_main) ---
 us_counties.boundary.plot(ax=ax_main, edgecolor="grey", linewidth=0.2, zorder=2)
