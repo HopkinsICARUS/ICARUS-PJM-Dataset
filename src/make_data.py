@@ -129,10 +129,10 @@ def write_transport_splits(dt_transport_cap: pd.DataFrame, outdir: Path, prefix:
     generators_interface = dt_transport_cap[~is_from & is_to].copy()
     generators_interface.to_csv(output_dir / "generators_interface.csv", index=False)
 
-    # 3) Exports => load_interface
-    load_interface = dt_transport_cap[is_from & ~is_to].copy()
-    load_interface.to_csv(output_dir / "load_interface.csv", index=False)
-    
+    # 3) Exports => loads_interface
+    loads_interface = dt_transport_cap[is_from & ~is_to].copy()
+    loads_interface.to_csv(output_dir / "loads_interface.csv", index=False)
+
     print(f"Successfully split transport capacity data into '{output_dir}'.")
 
 
@@ -156,8 +156,8 @@ def main():
     REGION_PREFIX = "PJM"
 
     # --- SETUP ---
-    data_dir = Path(Path.cwd(), "data")
-    raw_dir = Path(Path.cwd(), "rawdata/epa-2023-reference-case")
+    data_dir = Path(Path.cwd(), "data/processed")
+    raw_dir = Path(Path.cwd(), "data/raw/epa-2023-reference-case")
     data_dir.mkdir(parents=True, exist_ok=True)
     
     print(f"Processing data. Active region filter: {REGION_PREFIX or 'None'}")
@@ -170,7 +170,7 @@ def main():
         sheet_name="Table 2-2",
         region_prefix=REGION_PREFIX,
     )
-    dt_load.to_csv(get_output_path(data_dir, "load", REGION_PREFIX), index=False)
+    dt_load.to_csv(get_output_path(data_dir, "load_profiles", REGION_PREFIX), index=False)
 
     dt_transport_cap = make_transport_limit_data(
         path2file=raw_dir / "table-3-27-annual-transmission-capabilities-of-u.s.-model-regions-in-epa-2023-reference-case.xlsx",
@@ -195,14 +195,14 @@ def main():
         sheet_name="NEEDS_retireby2028",
         region_prefix=REGION_PREFIX,
     )
-    dt_retirements.to_csv(get_output_path(data_dir, "generator_retirements_by_2028", REGION_PREFIX), index=False)
+    dt_retirements.to_csv(get_output_path(data_dir, "generators_retirement_by_2028", REGION_PREFIX), index=False)
 
     # Process renewable energy data
     res_files = {
-        "wind_onshore": ("table-4-37-wind-generation-profiles-in-epa-2023-reference-case-kwh-of-generation-per-mw-of-capacity.xlsx", "Onshore", "Wind"),
-        "wind_offshore_fixed": ("table-4-37-wind-generation-profiles-in-epa-2023-reference-case-kwh-of-generation-per-mw-of-capacity.xlsx", "Offshore Fixed", "Wind"),
-        "wind_offshore_floating": ("table-4-37-wind-generation-profiles-in-epa-2023-reference-case-kwh-of-generation-per-mw-of-capacity.xlsx", "Offshore Floating", "Wind"),
-        "solar": ("table-4-41-solar-photovoltaic-generation-profiles-in-epa-2023-reference-case-kwh-of-generation-per-mw-of-capacity.xlsx", "Table 4-41", "Solar"),
+        "generation_profiles_wind_onshore": ("table-4-37-wind-generation-profiles-in-epa-2023-reference-case-kwh-of-generation-per-mw-of-capacity.xlsx", "Onshore", "Wind"),
+        "generation_profiles_wind_offshore_fixed": ("table-4-37-wind-generation-profiles-in-epa-2023-reference-case-kwh-of-generation-per-mw-of-capacity.xlsx", "Offshore Fixed", "Wind"),
+        "generation_profiles_wind_offshore_floating": ("table-4-37-wind-generation-profiles-in-epa-2023-reference-case-kwh-of-generation-per-mw-of-capacity.xlsx", "Offshore Floating", "Wind"),
+        "generation_profiles_solar": ("table-4-41-solar-photovoltaic-generation-profiles-in-epa-2023-reference-case-kwh-of-generation-per-mw-of-capacity.xlsx", "Table 4-41", "Solar"),
     }
 
     for name, (file, sheet, res_type) in res_files.items():

@@ -2,3 +2,7 @@
 .DS_Store
 
 ipm_v6_regions.zip
+
+data/raw/nrel-speed-to-power/
+
+src/make_data_datacenter.py

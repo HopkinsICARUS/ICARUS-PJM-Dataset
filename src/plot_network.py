@@ -40,16 +40,16 @@ def generate_colormap(N):
 
 # --- 1. LOAD GEOSPATIAL BASEMAP DATA ---
 print("Loading geospatial data...")
-us_states_path = Path(Path.cwd(), "rawdata", "epa-2023-reference-case", "cb_2018_us_state_500k.zip")
+us_states_path = Path(Path.cwd(), "data", "raw", "epa-2023-reference-case", "cb_2018_us_state_500k.zip")
 us_states = gpd.read_file(us_states_path)
 states2drop_names = ["Alaska", "Hawaii", "Puerto Rico", "Commonwealth of the Northern Mariana Islands", "United States Virgin Islands", "American Samoa", "Guam"]
 states2drop_fp = us_states.loc[us_states["NAME"].isin(states2drop_names), "STATEFP"].values
 us_states = us_states.loc[~us_states["NAME"].isin(states2drop_names)]
-us_counties_path = Path(Path.cwd(), "rawdata", "epa-2023-reference-case", "cb_2018_us_county_500k.zip")
+us_counties_path = Path(Path.cwd(), "data", "raw", "epa-2023-reference-case", "cb_2018_us_county_500k.zip")
 us_counties = gpd.read_file(us_counties_path)
 us_counties = us_counties.dropna()
 us_counties = us_counties[~us_counties["STATEFP"].isin(states2drop_fp)]
-epa_ipm_shape_path = Path(Path.cwd(), "rawdata", "epa-2023-reference-case", "ipm_v6_regions.zip")
+epa_ipm_shape_path = Path(Path.cwd(), "data", "raw", "epa-2023-reference-case", "ipm_v6_regions.zip")
 epa = gpd.read_file(epa_ipm_shape_path, crs="EPSG:4326")
 epa = epa.to_crs(us_states.crs)
 
@@ -57,7 +57,7 @@ epa = epa.to_crs(us_states.crs)
 print("Processing transmission capacity data...")
 epa_centroid = epa.copy()
 epa_centroid["CENTROID"] = epa_centroid.geometry.centroid
-epa_trans_limits = pd.read_csv(Path(Path.cwd(), "data", "transport_cap_all.csv"))
+epa_trans_limits = pd.read_csv(Path(Path.cwd(), "data", "processed", "transport_cap_all.csv"))
 epa_trans_limits.rename({"TTC_Capacity_2028": "MW"}, axis=1, inplace=True)
 epa_trans_limits = epa_trans_limits.loc[(epa_trans_limits["From"].isin(np.unique(epa.IPM_Region))) & (epa_trans_limits["To"].isin(np.unique(epa.IPM_Region)))]
 from_to = epa_trans_limits["From"] + "#" + epa_trans_limits["To"]
@@ -248,7 +248,7 @@ plt.tight_layout(rect=[0, 0, 0.85, 0.95])
 
 # --- Save the figure ---
 # Ensure the 'figures' directory exists before saving
-output_dir = Path(Path.cwd(), "figures")
+output_dir = Path(Path.cwd(), "data", "figures")
 output_dir.mkdir(parents=True, exist_ok=True)
 
 output_path = output_dir / f"epa_ipm_trans_limits_{REGION_PREFIX}.png"

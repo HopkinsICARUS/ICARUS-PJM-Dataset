@@ -14,7 +14,7 @@ ICARUS develops advanced data and modeling tools to strengthen the reliability, 
 Our goal is to make these improved datasets, algorithms, and case studies publicly available so that researchers, policymakers, and practitioners can better **assess vulnerabilities, plan investments, and enhance the resilience of essential services** nationwide.
 
 ## What are ICARUS deliverables?
-ICARUS’s immediate goal is to create, release, and maintain datasets that directly inform infrastructure efficiency, reliability, and resiliency across the U.S. Our first priority is the [ICARUS PJM Dataset](data/PJM), a high-resolution, regularly updated resource designed to illuminate some of the region’s most pressing challenges:
+ICARUS’s immediate goal is to create, release, and maintain datasets that directly inform infrastructure efficiency, reliability, and resiliency across the U.S. Our first priority is the [ICARUS PJM Dataset](data/output/PJM.zip), a high-resolution, regularly updated resource designed to illuminate some of the region’s most pressing challenges:
  - Data-center integration. Support reliable, just-in-time integration of the unprecedented growth in data centers across Virginia, Maryland, and Pennsylvania. See [WaPo](https://www.washingtonpost.com/business/2025/09/13/big-tech-data-centers-electricity-energy-power-texas-pennsylvania/f7ab00d8-9056-11f0-8260-0712daa5c125_story.html) for more details. 
  - Resource adequacy. Enable deeper analysis of supply capacity shortages that have driven unprecedented capacity price increases in PJM states. See [NYTimes](https://www.nytimes.com/2025/07/23/business/energy-environment/governors-pjm-electric-grid.html) for more details.
  - Policy guidance. Equip policymakers across 13 PJM states and the District of Columbia to steer transmission and generation investments that can contain rapid electricity rate growth. See [WSJ](https://www.wsj.com/finance/investing/higher-electricity-prices-arent-all-good-for-utilities-23113b91?reflink=desktopwebshare_permalink) for more details. 
@@ -55,10 +55,13 @@ This table provides a high-level comparison of this dataset with other common pu
 
 For convenience, pre-processed datasets for common regions are available for direct download.
 
-  * [**Download PJM Dataset (Base)**](data/PJM)
-  * [**Download PJM Dataset in GenX format**](data/GenX_PJM_9zones)<sup>†</sup>  
+  * [**Download PJM Dataset (Base)**](data/output/PJM.zip)
+  * **PJM Dataset in [GenX](https://github.com/GenXProject/GenX.jl) format**<sup>†</sup> 
+    -  [**Download GenX_PJM_9zones_Base**](data/output/GenX_PJM_9zones_Base.zip)
+    -  [**Download GenX_PJM_9zones_DataCenters**](data/output/GenX_PJM_9zones_DataCenters.zip)
+  * [**Download PJM Data Center Dataset**](data/processed/datacenter_cap_all.csv)
 
-<sup>†</sup> This version is a simplified, hard-coded conversion of the [**PJM Dataset (Base)**](data/PJM) into the [**GenX**](https://github.com/GenXProject/GenX.jl) format, following examples from the official [GenX repository](https://github.com/GenXProject/GenX.jl). In addition to EPA’s base load profiles, it integrates **planned** and **in-construction data center loads** into the total demand profiles. This version does **not** explicitly model cross-regional transmission interfaces, which can be approximated by representing **outgoing flows as generators** (see [`generators_interface.csv`](data/PJM/generators_interface.csv)) and **incoming flows as loads** (see [`load_interface.csv`](data/PJM/load_interface.csv)).
+<sup>†</sup> These versions are simplified, hard-coded conversions of the [**PJM Dataset (Base)**](data/output/PJM.zip) into the [**GenX**](https://github.com/GenXProject/GenX.jl) format, following examples from the official [GenX repository](https://github.com/GenXProject/GenX.jl), where the corresponding **licenses and attribution requirements** are provided.
 
 ### Future Enhancements
 
@@ -66,11 +69,14 @@ We plan to expand the repository's scope to include emerging challenges and regu
 
 | Feature Area             | Description                                                               | Target      |
 | ------------------------ | ------------------------------------------------------------------------- | ----------- |
-| **Data Center Loads** | Incorporate state- and regional-level projections for data center demand.    | `Available`      |
+| **Data Center Capacity** | Incorporate state- and regional-level projections for data center demand.    | `AvailabAvailable as of Oct, 2025`      |
 | **Downscaled Atmospheric Data** | Integrate other weather (year) data to model (extreme) weather impacts.     | `Soon`      |
 | **FERC Order 1920 Compliance** | Model transmission expansion scenarios based on the new FERC rule.  | `Soon`      |
 | **State/Utility representation** | Enhanced resolution to consider state/utility-level impacts.  | `Soon`      |
 | **Nodal representation** | Enhanced resolution to consider more detailed transmission network.  | `Soon`      |
+
+**A schematic representation of the PJM and data center data sets (see below for details)**
+  ![Planned and In-Construction Data Center Capacity in PJM](data/figures/epa_ipm_trans_limits_PJM_dc_planned_plus_in_construction.png)
 
 ---
 ## About the Data
@@ -87,8 +93,8 @@ The Python script (`src/make_data.py`) in this repository perform the following 
 5.  Save the processed data into clean, easy-to-use CSV files.
 
 
-The Data Center Loads are sourced from the **[U.S. DOE NREL Speed to Power Initiative](https://maps.nrel.gov/speed-to-power/?vL=6834e82591241decedd4ef8c%2C682746c9d58843cf7876093e%2C6838ae2891241decedd4ef8f%2C685c736d77a7c73f0a473a5d&b=%5B%5B-130.500647%2C25.796786%5D%2C%5B-56.785252%2C50.844826%5D%5D)**.
-The aggregated dataset for the contiguous United States (CONUS) is provided in [`load_datacenter_all.csv`](data/load_datacenter_all.csv), while region-specific subsets (e.g., for PJM) are located within their respective folders under `data`, such as [`load_datacenter.csv`](data/PJM/load_datacenter.csv).
+The Data Center Capacity are sourced from the **[U.S. DOE NREL Speed to Power Initiative](https://maps.nrel.gov/speed-to-power/?vL=6834e82591241decedd4ef8c%2C682746c9d58843cf7876093e%2C6838ae2891241decedd4ef8f%2C685c736d77a7c73f0a473a5d&b=%5B%5B-130.500647%2C25.796786%5D%2C%5B-56.785252%2C50.844826%5D%5D)**.
+The aggregated dataset for the contiguous United States (CONUS) is provided in [`data/processed/datacenter_cap_all.csv`](data/processed/datacenter_cap_all.csv), while region-specific subsets (e.g., for PJM) are located within their respective folders under `data/processed`, such as [`loads_datacenter_cap.csv`](data/processed/PJM/loads_datacenter_cap.csv).
 
 * [ ] More details to follow for 1) Downscaled Atmospheric Data and 2) FERC Order 1920 Compliance.
 
@@ -104,30 +110,30 @@ The renewable generation data is stratified by several "class" types, which is c
 
 ### Generated Data Files
 
-When you run the script with a `REGION_PREFIX` (e.g., "PJM"), the following files are generated under `data/PJM/`:
+When you run the script with a `REGION_PREFIX` (e.g., "PJM"), the following files are generated under `data/processed/PJM`:
 
-| File Name                             | Description                                                              |
-| ------------------------------------- | ------------------------------------------------------------------------ |
-| `generators.csv`                      | List of active power plants in the region.                               |
-| `generator_retirements_by_2028.csv`   | List of generators scheduled for retirement by 2028.                     |
-| `load.csv`                            | Hourly load profiles for each sub-region.                                |
-| `lines.csv`                           | Internal transmission lines within the region.                           |
-| `generators_interface.csv`            | Transmission import capacity from other regions.                         |
-| `load_interface.csv`                  | Transmission export capacity to other regions.                           |
-| `wind_onshore.csv`                    | Hourly generation profiles for onshore wind, stratified by class.        |
-| `wind_offshore_fixed.csv`             | Hourly generation profiles for fixed-bottom offshore wind.               |
-| `wind_offshore_floating.csv`          | Hourly generation profiles for floating offshore wind.                   |
-| `solar.csv`                           | Hourly generation profiles for solar PV, stratified by class.            |
+| File Name                                                 | Description                                                              |
+| --------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `generators.csv`                                          | List of active power plants in the region.                               |
+| `generators_retirement_by_2028.csv`                       | List of generators scheduled for retirement by 2028.                     |
+| `load_profiles.csv`                                       | Hourly load profiles for each sub-region.                                |
+| `lines.csv`                                               | Internal transmission lines within the region.                           |
+| `generators_interface.csv`                                | Transmission import capacity from other regions.                         |
+| `loads_interface.csv`                                     | Transmission export capacity to other regions.                           |
+| `generation_profiles_wind_onshore.csv`                    | Hourly generation profiles for onshore wind, stratified by class.        |
+| `generation_profiles_wind_offshore_fixed.csv`             | Hourly generation profiles for fixed-bottom offshore wind.               |
+| `generation_profiles_wind_offshore_floating.csv`          | Hourly generation profiles for floating offshore wind.                   |
+| `generation_profiles_solar.csv`                           | Hourly generation profiles for solar PV, stratified by class.            |
 
 -----
 
 ### Raw and Extracted Data
 
 Not all tables listed in the [Documentation for EPA’s Power Sector Modeling Platform 2023 Using the Integrated Planning Model 2023 Reference Case](https://www.epa.gov/system/files/documents/2025-02/epa-2023-reference-case.pdf) are provided as spreadsheets in the [Documentation for 2023 Reference Case](https://www.epa.gov/power-sector-modeling/documentation-2023-reference-case).
-To ensure completeness, we manually extracted the missing tables and saved them as CSV files in [`rawdata/epa-2023-reference-case`](rawdata/epa-2023-reference-case).
+To ensure completeness, we manually extracted the missing tables and saved them as CSV files in [`data/raw/epa-2023-reference-case`](data/raw/epa-2023-reference-case).
 For convenience and to serve as a one-stop repository, we also included the original spreadsheets that were already available from the [Documentation for 2023 Reference Case](https://www.epa.gov/power-sector-modeling/documentation-2023-reference-case).
 
-Due to file size limitations, the folder [`rawdata/epa-2023-reference-case`](rawdata/epa-2023-reference-case) does **not** include the IPM v6 Regions shapefiles.
+Due to file size limitations, the folder [`data/raw/epa-2023-reference-case`](data/raw/epa-2023-reference-case) does **not** include the IPM v6 Regions shapefiles.
 Please manually download [`ipm_v6_regions.zip`](https://www.epa.gov/sites/production/files/2019-08/ipm_v6_regions.zip) and place it inside that directory.
 
 | Parameter                           | Source Document Tables                        |
@@ -181,7 +187,7 @@ _Note_: You can easily filter the entire datasets for a specific region other th
   * **For a specific region:** `REGION_PREFIX = "PJM"` (default) or `REGION_PREFIX = "MIS"`
   * **For the complete US dataset:** `REGION_PREFIX = ""`
 
-When a prefix is set, the filtered data will be saved in a dedicated subfolder (e.g., `data/PJM/`).
+When a prefix is set, the filtered data will be saved in a dedicated subfolder (e.g., `data/processed/PJM/`).
 
 ## Regional Transmission Visualization
 
@@ -193,9 +199,9 @@ The example map below was generated by setting **`REGION_PREFIX = "PJM"`**, whic
 - **Interface Lines (Red):** Corridors connecting PJM to neighboring regions.  
 - **External Lines (Grey):** All other transmission lines in the U.S. model.  
 
-![PJM Transmission Map](figures/epa_ipm_trans_limits_PJM.png)
+![PJM Transmission Map](data/figures/epa_ipm_trans_limits_PJM.png)
 
-## Regional Transmission Visualization With Data Center Loads
+## Regional Transmission Visualization With Data Center Capacity
 
 The repository also includes visualization scripts to overlay **data center load capacities** on top of the EPA IPM regional transmission network.
 This enhanced map can be generated by running:
@@ -207,7 +213,7 @@ python src/plot_network_datacenter.py
 The script allows users to choose which category of data center loads to display using the parameter:
 
 ```python
-# Options: "Planned", "Operating", "In Construction", "Planned + In Construction", "Total"
+# Options: "Operating", "In Construction", "Planned", "Planned + In Construction", "Total"
 DC_CAPACITY_TO_PLOT = "Planned"
 ```
 
@@ -215,19 +221,19 @@ When **`REGION_PREFIX = "PJM"`** is set, the resulting maps display the PJM regi
 
 ### Example Visualizations
 
-* **Operating Data Center Loads:**
-  ![Operating Data Center Loads in PJM](figures/epa_ipm_trans_limits_PJM_dc_operating.png)
+* **Operating Data Center Capacity:**
+  ![Operating Data Center Capacity in PJM](data/figures/epa_ipm_trans_limits_PJM_dc_operating.png)
 
-* **In-Construction Data Center Loads:**
-  ![In-Construction Data Center Loads in PJM](figures/epa_ipm_trans_limits_PJM_dc_in_construction.png)
+* **In-Construction Data Center Capacity:**
+  ![In-Construction Data Center Capacity in PJM](data/figures/epa_ipm_trans_limits_PJM_dc_in_construction.png)
 
-* **Planned Data Center Loads:**
-  ![Planned Data Center Loads in PJM](figures/epa_ipm_trans_limits_PJM_dc_planned.png)
+* **Planned Data Center Capacity:**
+  ![Planned Data Center Capacity in PJM](data/figures/epa_ipm_trans_limits_PJM_dc_planned.png)
 
-* **Planned + In-Construction Data Center Loads:**
-  ![Planned and In-Construction Data Center Loads in PJM](figures/epa_ipm_trans_limits_PJM_dc_planned_plus_in_construction.png)
+* **Planned + In-Construction Data Center Capacity:**
+  ![Planned and In-Construction Data Center Capacity in PJM](data/figures/epa_ipm_trans_limits_PJM_dc_planned_plus_in_construction.png)
 
 * **Total Data Center Load (MW):**
-  ![Total Data Center Load (MW)](figures/epa_ipm_trans_limits_PJM_dc_total.png)
+  ![Total Data Center Load (MW)](data/figures/epa_ipm_trans_limits_PJM_dc_total.png)
 
 -----
