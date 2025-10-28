@@ -75,8 +75,9 @@ We plan to expand the repository's scope to include emerging challenges and regu
 | **State/Utility representation** | Enhanced resolution to consider state/utility-level impacts.  | `Soon`      |
 | **Nodal representation** | Enhanced resolution to consider more detailed transmission network.  | `Soon`      |
 
-**A schematic representation of the PJM and data center data sets (see below for details)**
-  ![Planned and In-Construction Data Center Capacity in PJM](data/figures/epa_ipm_trans_limits_PJM_dc_planned_plus_in_construction.png)
+**Schematic Representation of PJM and Data Center Datasets**
+*Illustrative overview of planned and in-construction data center capacity in PJM (see details below).*
+![Schematic Representation of PJM and Data Center Datasets](data/figures/epa_ipm_trans_limits_PJM_dc_planned_plus_in_construction.png)
 
 ---
 ## About the Data
@@ -221,19 +222,27 @@ When **`REGION_PREFIX = "PJM"`** is set, the resulting maps display the PJM regi
 
 ### Example Visualizations
 
-* **Operating Data Center Capacity:**
-  ![Operating Data Center Capacity in PJM](data/figures/epa_ipm_trans_limits_PJM_dc_operating.png)
+* **Operating Data Center Capacity (MW):**
+  *U.S. (top) and PJM (bottom)*
+  ![Operating Data Center Capacity](data/figures/epa_ipm_trans_limits_PJM_dc_operating.png)
 
-* **In-Construction Data Center Capacity:**
-  ![In-Construction Data Center Capacity in PJM](data/figures/epa_ipm_trans_limits_PJM_dc_in_construction.png)
+* **In-Construction Data Center Capacity (MW):**
+  *U.S. (top) and PJM (bottom)*
+  ![In-Construction Data Center Capacity](data/figures/epa_ipm_trans_limits_PJM_dc_in_construction.png)
 
-* **Planned Data Center Capacity:**
-  ![Planned Data Center Capacity in PJM](data/figures/epa_ipm_trans_limits_PJM_dc_planned.png)
+* **Operating and In-Construction Data Center Capacity (MW):**
+  ![Operating and In-Construction Data Center Capacity](data/figures/epa_ipm_trans_limits_PJM_dc_operating_plus_in_construction.png)
 
-* **Planned + In-Construction Data Center Capacity:**
-  ![Planned and In-Construction Data Center Capacity in PJM](data/figures/epa_ipm_trans_limits_PJM_dc_planned_plus_in_construction.png)
+* **Planned Data Center Capacity (MW):**
+  *U.S. (top) and PJM (bottom)*
+  ![Planned Data Center Capacity](data/figures/epa_ipm_trans_limits_PJM_dc_planned.png)
+
+* **Planned and In-Construction Data Center Capacity (MW):**
+  *U.S. (top) and PJM (bottom)*
+  ![Planned and In-Construction Data Center Capacity](data/figures/epa_ipm_trans_limits_PJM_dc_planned_plus_in_construction.png)
 
 * **Total Data Center Load (MW):**
+  *U.S. (top) and PJM (bottom)*
   ![Total Data Center Load (MW)](data/figures/epa_ipm_trans_limits_PJM_dc_total.png)
 
 -----

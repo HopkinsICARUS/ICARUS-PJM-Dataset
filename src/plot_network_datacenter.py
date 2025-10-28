@@ -24,8 +24,8 @@ REGION_PREFIX = "PJM"
 
 # --- NEW SETTING ---
 # Choose which data center capacity to plot.
-# Options: "Operating", "In Construction", "Planned", "Planned + In Construction", "Total"
-DC_CAPACITY_TO_PLOT = "Total"
+# Options: "Operating", "In Construction", "Planned", "Operating + In Construction", "Planned + In Construction", "Total"
+DC_CAPACITY_TO_PLOT = "Operating + In Construction"
 # --- END NEW SETTING ---
 
 
@@ -86,6 +86,11 @@ try:
     elif DC_CAPACITY_TO_PLOT == "Total":
         col_to_use = "Total (MW)"
         dc_legend_title = "Data Center Capacity (Total)"
+    elif DC_CAPACITY_TO_PLOT == "Operating + In Construction":
+        # Create the sum column. Ensure NaNs are treated as 0 for summation.
+        dc_df['Operating + In Construction (MW)'] = dc_df['Operating (MW)'].fillna(0) + dc_df['In Construction (MW)'].fillna(0)
+        col_to_use = "Operating + In Construction (MW)"
+        dc_legend_title = "Data Center Capacity (Operating + In Construction)"
     elif DC_CAPACITY_TO_PLOT == "Planned + In Construction":
         # Create the sum column. Ensure NaNs are treated as 0 for summation.
         dc_df['Planned + In Construction (MW)'] = dc_df['Planned (MW)'].fillna(0) + dc_df['In Construction (MW)'].fillna(0)
