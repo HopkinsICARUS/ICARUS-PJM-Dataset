@@ -59,7 +59,7 @@ For convenience, pre-processed datasets for common regions are available for dir
   * **PJM Dataset in [GenX](https://github.com/GenXProject/GenX.jl) format**<sup>†</sup> 
     -  [**Download GenX_PJM_9zones_Base**](data/output/GenX_PJM_9zones_Base.zip)
     -  [**Download GenX_PJM_9zones_DataCenters**](data/output/GenX_PJM_9zones_DataCenters.zip)
-  * [**Download PJM Data Center Dataset**](data/processed/datacenter_cap_all.csv)
+  * [**Download PJM Data Center Dataset**](data/processed/loads_datacenter_cap_zone.csv)
 
 <sup>†</sup> These versions are simplified, hard-coded conversions of the [**PJM Dataset (Base)**](data/output/PJM.zip) into the [**GenX**](https://github.com/GenXProject/GenX.jl) format, following examples from the official [GenX repository](https://github.com/GenXProject/GenX.jl), where the corresponding **licenses and attribution requirements** are provided.
 
@@ -69,10 +69,10 @@ We plan to expand the repository's scope to include emerging challenges and regu
 
 | Feature Area             | Description                                                               | Target      |
 | ------------------------ | ------------------------------------------------------------------------- | ----------- |
-| **Data Center Capacity** | Incorporate state- and regional-level projections for data center demand.    | `AvailabAvailable as of Oct, 2025`      |
+| **Data Center Capacity** | Incorporate state- and regional-level projections for data center demand.    | `Available as of Oct, 2025`      |
 | **Downscaled Atmospheric Data** | Integrate other weather (year) data to model (extreme) weather impacts.     | `Soon`      |
 | **FERC Order 1920 Compliance** | Model transmission expansion scenarios based on the new FERC rule.  | `Soon`      |
-| **State/Utility representation** | Enhanced resolution to consider state/utility-level impacts.  | `Soon`      |
+| **State/Utility representation** | Enhanced resolution to consider state/utility-level impacts.  | `Available as of Nov, 2025`      |
 | **Nodal representation** | Enhanced resolution to consider more detailed transmission network.  | `Soon`      |
 
 **Schematic Representation of PJM and Data Center Datasets**
@@ -125,6 +125,22 @@ When you run the script with a `REGION_PREFIX` (e.g., "PJM"), the following file
 | `generation_profiles_wind_offshore_fixed.csv`             | Hourly generation profiles for fixed-bottom offshore wind.               |
 | `generation_profiles_wind_offshore_floating.csv`          | Hourly generation profiles for floating offshore wind.                   |
 | `generation_profiles_solar.csv`                           | Hourly generation profiles for solar PV, stratified by class.            |
+
+The corresponding `_zone` files provide PJM’s **utility-level (zone-level) mappings** for all relevant resources, including:
+
+  * `generators_zone.csv`
+  * `generators_retirement_by_2028_zone.csv`
+  * `generation_profiles_wind_onshore_zone.csv`
+  * `generation_profiles_wind_offshore_fixed_zone.csv`
+  * `generation_profiles_wind_offshore_floating_zone.csv`
+  * `generation_profiles_solar_zone.csv`
+  * `loads_datacenter_cap_zone.csv`
+
+These mappings are constructed using multiple sources from PJM, most notably:
+  * [PJM Manual 18:PJM Capacity Market Revision: 61 Effective Date: July 23, 2025](https://www.pjm.com/-/media/DotCom/documents/manuals/m18.ashx)
+  * The compiled cross-reference file: [`IPM Regions_State_Utilities.xlsx`](data/output/IPM%20Regions_State_Utilities.xlsx)
+
+Together, these references provide a consistent, utility-level mapping between EPA IPM regions, states, and PJM transmission/load zones used throughout the dataset.
 
 -----
 
