@@ -55,11 +55,11 @@ This table provides a high-level comparison of this dataset with other common pu
 
 For convenience, pre-processed datasets for common regions are available for direct download.
 
-  * [**Download PJM Dataset (Base)**](data/output/PJM.zip)
+  * [**Download PJM Dataset (Base)**: 21 PJM zones over 9 IPM regions (with transfer limits)](data/output/PJM.zip)
   * **PJM Dataset in [GenX](https://github.com/GenXProject/GenX.jl) format**<sup>†</sup> 
-    -  [**Download GenX_PJM_9zones_Base**](data/output/GenX_PJM_9zones_Base.zip)
-    -  [**Download GenX_PJM_9zones_DataCenters**](data/output/GenX_PJM_9zones_DataCenters.zip)
-  * [**Download PJM Data Center Dataset**](data/processed/loads_datacenter_cap_zone.csv)
+    -  [**Download GenX_PJM_9zones_Base**: 9 IPM regions (with transfer limits)](data/output/GenX_PJM_9zones_Base.zip)
+    -  [**Download GenX_PJM_9zones_DataCenters**: 9 IPM regions (with transfer limits)](data/output/GenX_PJM_9zones_DataCenters.zip)
+  * [**Download PJM Data Center Dataset**: 21 PJM zones over 9 IPM regions (with transfer limits)](data/processed/PJM/loads_datacenter_cap_zone.csv)
 
 <sup>†</sup> These versions are simplified, hard-coded conversions of the [**PJM Dataset (Base)**](data/output/PJM.zip) into the [**GenX**](https://github.com/GenXProject/GenX.jl) format, following examples from the official [GenX repository](https://github.com/GenXProject/GenX.jl), where the corresponding **licenses and attribution requirements** are provided.
 
@@ -69,10 +69,10 @@ We plan to expand the repository's scope to include emerging challenges and regu
 
 | Feature Area             | Description                                                               | Target      |
 | ------------------------ | ------------------------------------------------------------------------- | ----------- |
-| **Data Center Capacity** | Incorporate state- and regional-level projections for data center demand.    | `Available as of Oct, 2025`      |
+| **Data Center Capacity** | Incorporate state-, zonal- and regional-level projections for data center demand.    | `Available as of Oct, 2025`, `Updated as of Nov, 2025`      |
 | **Downscaled Atmospheric Data** | Integrate other weather (year) data to model (extreme) weather impacts.     | `Soon`      |
 | **FERC Order 1920 Compliance** | Model transmission expansion scenarios based on the new FERC rule.  | `Soon`      |
-| **State/Utility representation** | Enhanced resolution to consider state/utility-level impacts.  | `Available as of Nov, 2025`      |
+| **State/Utility representation** | Enhanced resolution spatially resolved upto PJM's 21 Zones and 9 IPM Regions for PJM, useful state/utility-level studies.  | `Available as of Nov, 2025`      |
 | **Nodal representation** | Enhanced resolution to consider more detailed transmission network.  | `Soon`      |
 
 **Schematic Representation of PJM and Data Center Datasets**
@@ -140,7 +140,7 @@ These mappings are constructed using multiple sources from PJM, most notably:
   * [PJM Manual 18:PJM Capacity Market Revision: 61 Effective Date: July 23, 2025](https://www.pjm.com/-/media/DotCom/documents/manuals/m18.ashx)
   * The compiled cross-reference file: [`IPM Regions_State_Utilities.xlsx`](data/output/IPM%20Regions_State_Utilities.xlsx)
 
-Together, these references provide a consistent, utility-level mapping between EPA IPM regions, states, and PJM transmission/load zones used throughout the dataset.
+Together, these references provide a consistent, utility-level mapping between EPA IPM regions (9 regions for PJM), states, and PJM transmission/load zones (21 zones) used throughout the dataset.
 
 -----
 
