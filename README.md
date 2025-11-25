@@ -13,6 +13,13 @@ ICARUS develops advanced data and modeling tools to strengthen the reliability, 
 
 Our goal is to make these improved datasets, algorithms, and case studies publicly available so that researchers, policymakers, and practitioners can better **assess vulnerabilities, plan investments, and enhance the resilience of essential services** nationwide.
 
+## How Can ICARUS Help Energy Policymakers?
+<div style="background-color: #e7f3ff; padding: 15px; border-radius: 5px;">
+ICARUS aims to make energy policy analysis accessible to stakeholders who often lack the technical expertise, data, modeling, and computational resources needed to conduct quantitative energy policy analysis. ICARUS bridges this gap by providing expert analysis using our comprehensive PJM dataset and advanced modeling capabilities.
+To request an ICARUS analysis, we <a href="https://hopkinsicarus.github.io/ICARUS-PJM-Dataset/">invite stakeholders to submit their energy policy requests</a> concerning PJM.
+We are committed to maintaining stakeholder privacy—we will not release requests or identify who submitted them—and to responding promptly. When submitting a request, there is a field to indicate urgency.
+</div>
+
 ## What are ICARUS deliverables?
 ICARUS’s immediate goal is to create, release, and maintain datasets that directly inform infrastructure efficiency, reliability, and resiliency across the U.S. Our first priority is the [ICARUS PJM Dataset](data/output/PJM.zip), a high-resolution, regularly updated resource designed to illuminate some of the region’s most pressing challenges:
  - Data-center integration. Support reliable, just-in-time integration of the unprecedented growth in data centers across Virginia, Maryland, and Pennsylvania. See [WaPo](https://www.washingtonpost.com/business/2025/09/13/big-tech-data-centers-electricity-energy-power-texas-pennsylvania/f7ab00d8-9056-11f0-8260-0712daa5c125_story.html) for more details. 
