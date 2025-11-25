@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICARUS - Stakeholder Question Submission</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 35px;
+        }
+        
+        .section h2 {
+            color: #2a5298;
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .section p {
+            margin-bottom: 12px;
+            color: #555;
+            font-size: 1.05em;
+        }
+        
+        .mission-box {
+            background: #f7f9fc;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            margin: 20px 0;
+        }
+        
+        .process-steps {
+            background: #f0f4ff;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .process-steps ol {
+            margin-left: 20px;
+        }
+        
+        .process-steps li {
+            margin-bottom: 12px;
+            color: #444;
+            font-size: 1.05em;
+        }
+        
+        .privacy-notice {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+        }
+        
+        .privacy-notice strong {
+            color: #856404;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2a5298;
+            font-size: 1.05em;
+        }
+        
+        .required {
+            color: #dc3545;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1em;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        
+        .footer {
+            background: #f7f9fc;
+            padding: 20px 40px;
+            text-align: center;
+            color: #666;
+            font-size: 0.95em;
+        }
+        
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border-left: 4px solid #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><a href="https://github.com/HopkinsICARUS/ICARUS-PJM-Dataset" target="_blank" style="color: white; text-decoration: none;">ICARUS</a></h1>
+            <p>Infrastructure Centric Adaptation and Resiliency in the U.S.</p>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2>Our Mission</h2>
+                <div class="mission-box">
+                    <p><strong>Making energy policy analysis accessible to all stakeholders.</strong></p>
+                    <p>States, NGOs, companies, media organizations, universities, and other stakeholders often lack the technical expertise and computational resources needed to conduct rigorous energy policy analysis. <a href="https://github.com/HopkinsICARUS/ICARUS-PJM-Dataset" target="_blank" style="color: #2a5298; font-weight: 600;">ICARUS</a> bridges this gap by providing expert analysis using our comprehensive PJM dataset and advanced modeling capabilities.</p>
+                    <p style="margin-top: 15px;">For questions about this initiative, contact Dr. Yury Dvorkin at <a href="mailto:ydvorki1@jhu.edu" style="color: #2a5298; font-weight: 600;">ydvorki1@jhu.edu</a></p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>How It Works</h2>
+                <div class="process-steps">
+                    <ol>
+                        <li><strong>Submit Your Question:</strong> Fill out the form below with your energy policy question and desired analysis outcomes.</li>
+                        <li><strong>Expert Analysis:</strong> Our team analyzes your question using the <a href="https://github.com/HopkinsICARUS/ICARUS-PJM-Dataset" target="_blank" style="color: #2a5298; font-weight: 600;">ICARUS</a>-PJM dataset and modeling framework.</li>
+                        <li><strong>Receive Results:</strong> We deliver a concise brief with numerical results and actionable insights tailored to your timeframe.</li>
+                    </ol>
+                </div>
+                
+                <div class="privacy-notice">
+                    <strong>Privacy Commitment:</strong> We do not publish submitted questions or any identifying information (names, emails, organizations). All submissions are kept strictly confidential.
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Submit Your Question</h2>
+                
+                <div class="success-message" id="successMessage">
+                    Thank you for your submission! We will review your question and contact you soon.
+                </div>
+                
+                <form id="questionForm" action="https://formspree.io/f/mgvbpgae" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name <span class="required">*</span> <span style="font-weight: normal; color: #666; font-size: 0.9em;">(We won't release)</span></label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Contact Email <span class="required">*</span> <span style="font-weight: normal; color: #666; font-size: 0.9em;">(We won't release it or share it; it will be used to contact you with our results. Doesn't have to be your work email)</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="organization">Organization <span class="required">*</span> <span style="font-weight: normal; color: #666; font-size: 0.9em;">(e.g., State, NGO, Media, University, Company, etc.)</span></label>
+                        <input type="text" id="organization" name="organization" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="question">Your Question <span class="required">*</span></label>
+                        <textarea id="question" name="question" placeholder="Please describe your energy policy question in detail..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="output">Desired Output</label>
+                        <textarea id="output" name="output" placeholder="What specific insights, metrics, or analysis results are you looking for?"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="urgency">Urgency / Timeline <span class="required">*</span></label>
+                        <select id="urgency" name="urgency" required>
+                            <option value="">Select timeline...</option>
+                            <option value="1-week">1 Week</option>
+                            <option value="2-weeks">2 Weeks</option>
+                            <option value="1-month">1 Month</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Submit Question</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Part of the <a href="https://github.com/HopkinsICARUS/ICARUS-PJM-Dataset" target="_blank">ICARUS-PJM Dataset Project</a></p>
+            <p>Johns Hopkins University | Energy Policy Analysis</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">Questions? Contact Dr. Yury Dvorkin at <a href="mailto:ydvorki1@jhu.edu">ydvorki1@jhu.edu</a></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('questionForm').addEventListener('submit', function(e) {
+            // If using Formspree or similar service, this will handle the submission
+            // The success message will show after successful submission
+            const form = e.target;
+            
+            // Show success message after form submission (if using AJAX)
+            // For now, the form will submit normally to the action URL
+        });
+    </script>
+</body>
+</html>
