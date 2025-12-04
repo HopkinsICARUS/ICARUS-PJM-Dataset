@@ -15,7 +15,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%);
             min-height: 100vh;
             padding: 20px;
         }
@@ -30,10 +30,24 @@
         }
         
         .header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
+            background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%);
+            color: #1f2937;
             padding: 40px;
             text-align: center;
+            border-bottom: 3px solid #e5e7eb;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .logo-container img {
+            height: 80px;
+            border-radius: 8px;
         }
         
         .header h1 {
@@ -56,11 +70,11 @@
         }
         
         .section h2 {
-            color: #2a5298;
+            color: #002D72;
             font-size: 1.6em;
             margin-bottom: 15px;
             padding-bottom: 10px;
-            border-bottom: 3px solid #667eea;
+            border-bottom: 3px solid #002D72;
         }
         
         .section p {
@@ -70,15 +84,22 @@
         }
         
         .mission-box {
-            background: #f7f9fc;
+            background: #E6F3FF;
             padding: 25px;
             border-radius: 8px;
-            border-left: 4px solid #667eea;
+            border-left: 4px solid #002D72;
             margin: 20px 0;
         }
         
         .process-steps {
-            background: #f0f4ff;
+            background: #E6F3FF;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .form-container {
+            background: #E6F3FF;
             padding: 25px;
             border-radius: 8px;
             margin: 20px 0;
@@ -114,7 +135,7 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: #2a5298;
+            color: #002D72;
             font-size: 1.05em;
         }
         
@@ -140,7 +161,7 @@
         textarea:focus,
         select:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #002D72;
         }
         
         textarea {
@@ -149,7 +170,7 @@
         }
         
         .submit-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #002D72;
             color: white;
             padding: 15px 40px;
             border: none;
@@ -157,13 +178,14 @@
             font-size: 1.1em;
             font-weight: 600;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
             width: 100%;
         }
         
         .submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 10px 20px rgba(0, 45, 114, 0.3);
+            background: #003d99;
         }
         
         .submit-btn:active {
@@ -179,7 +201,7 @@
         }
         
         .footer a {
-            color: #667eea;
+            color: #002D72;
             text-decoration: none;
             font-weight: 600;
         }
@@ -202,8 +224,11 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1><a href="https://github.com/HopkinsICARUS/ICARUS-PJM-Dataset" target="_blank" style="color: white; text-decoration: none;">ICARUS</a></h1>
+            <h1><a href="https://github.com/HopkinsICARUS/ICARUS-PJM-Dataset" target="_blank" style="color: #1f2937; text-decoration: none;">ICARUS</a></h1>
             <p>Infrastructure Centric Adaptation and Resiliency in the U.S.</p>
+            <div class="logo-container">
+                <img src="https://energyinstitute.jhu.edu/wp-content/uploads/2021/04/OConnor-Energy-Institute-Logo.png" alt="Ralph O'Connor Sustainable Energy Institute Logo">
+            </div>
         </div>
         
         <div class="content">
@@ -211,7 +236,7 @@
             <div class="section">
                 <h2>About ICARUS</h2>
                 <div class="mission-box">
-                    <p><strong>ICARUS</strong> is a joint research initiative between the <a href=https://energyinstitute.jhu.edu/><u>Ralph O’Connor Sustainable Energy Institute</u></a> (ROSEI) at <a href=https://www.jhu.edu/><u>Johns Hopkins University</u></a>, <a href=https://energyinstitute.jhu.edu/epics/><u>NSF Global Center EPICS</u></a>, and the Johns Hopkins <a href=https://www.jhuapl.edu/work/mission-areas/research-and-exploratory-development><u>Applied Physics Laboratory</u></a> (APL), supported by a <a href=https://research.jhu.edu/major-initiatives/discovery-awards/><u>Johns Hopkins Discovery Award</u></a>.
+                    <p><strong>ICARUS</strong> is a joint research initiative between the <a href="https://energyinstitute.jhu.edu/"><u>Ralph O'Connor Sustainable Energy Institute</u></a> (ROSEI) at <a href="https://www.jhu.edu/"><u>Johns Hopkins University</u></a>, <a href="https://energyinstitute.jhu.edu/epics/"><u>NSF Global Center EPICS</u></a>, and the Johns Hopkins <a href="https://www.jhuapl.edu/work/mission-areas/research-and-exploratory-development"><u>Applied Physics Laboratory</u></a> (APL), supported by a <a href="https://research.jhu.edu/major-initiatives/discovery-awards/"><u>Johns Hopkins Discovery Award</u></a>.
                     </p>
                </div>
             </div>
@@ -220,8 +245,9 @@
                 <h2>Our Mission</h2>
                 <div class="mission-box">
                     <p><strong>Making energy policy analysis accessible to all stakeholders.</strong></p>
-                    <p>States, NGOs, companies, media organizations, universities, and other stakeholders often lack the technical expertise and computational resources needed to conduct rigorous energy policy analysis. <a href="https://github.com/HopkinsICARUS/ICARUS-PJM-Dataset" target="_blank" style="color: #2a5298; font-weight: 600;">ICARUS</a> bridges this gap by providing expert analysis using our comprehensive PJM dataset and advanced modeling capabilities.</p>
-                    <p style="margin-top: 15px;">For questions about this initiative, contact Dr. Yury Dvorkin at <a href="mailto:ydvorki1@jhu.edu" style="color: #2a5298; font-weight: 600;">ydvorki1@jhu.edu</a></p>
+                    <p>States, NGOs, companies, media organizations, universities, and other stakeholders often lack the technical expertise and computational resources needed to conduct rigorous energy policy analysis. <a href="https://github.com/HopkinsICARUS/ICARUS-PJM-Dataset" target="_blank" style="color: #002D72; font-weight: 600;">ICARUS</a> bridges this gap by providing expert analysis using our comprehensive PJM dataset and advanced modeling capabilities. In addition to our analyses, we provide recommendations for real-world policy implementation (if requested).</p>
+                    <p style="margin-top: 15px;"><strong>All analyses are provided free of charge.</strong> We welcome reasonable requests that align with our mission to support informed energy policy decisions.</p>
+                    <p style="margin-top: 15px;">For questions about this initiative, contact Dr. Yury Dvorkin at <a href="mailto:ydvorki1@jhu.edu" style="color: #002D72; font-weight: 600;">ydvorki1@jhu.edu</a></p>
                 </div>
             </div>
             
@@ -229,27 +255,29 @@
                 <h2>How It Works</h2>
                 <div class="process-steps">
                     <ol>
-                        <li><strong>Submit Your Question:</strong> Fill out the form below with your energy policy question and desired analysis outcomes.</li>
-                        <li><strong>Expert Analysis:</strong> Our team analyzes your question using the <a href="https://github.com/HopkinsICARUS/ICARUS-PJM-Dataset" target="_blank" style="color: #2a5298; font-weight: 600;">ICARUS</a>-PJM dataset and modeling framework.</li>
+                        <li><strong>Submit Your Problem Description:</strong> Fill out the form below describing your energy policy challenge. We appreciate detailed descriptions, but understand that it can sometimes be difficult to pinpoint specific issues. In such cases, describe the problem to the best of your ability, and our team will follow up with questions to help clarify and narrow down the challenge.</li>
+                        <li><strong>Expert Analysis:</strong> Our team analyzes your problem using the <a href="https://github.com/HopkinsICARUS/ICARUS-PJM-Dataset" target="_blank" style="color: #002D72; font-weight: 600;">ICARUS</a>-PJM dataset and modeling framework. When possible, please indicate your desired output format, such as a brief, case study, policy recommendation, or other deliverable type.</li>
                         <li><strong>Receive Results:</strong> We deliver a concise brief with numerical results and actionable insights tailored to your timeframe.</li>
+                        <li><strong>Implementation Strategy:</strong> Based on results and your interest, our team will prepare an implementation strategy to guide practical application of the findings.</li>
                     </ol>
                 </div>
                 
                 <div class="privacy-notice">
-                    <strong>Privacy Commitment:</strong> We do not publish submitted questions or any identifying information (names, emails, organizations). All submissions are kept strictly confidential.
+                    <strong>Privacy Commitment:</strong> We do not publish submitted questions or any identifying information (names, emails, organizations).
                 </div>
             </div>
             
             <div class="section">
-                <h2>Submit Your Question</h2>
+                <h2>Submit Your Problem Description</h2>
                 
                 <div class="success-message" id="successMessage">
                     Thank you for your submission! We will review your question and contact you soon.
                 </div>
                 
+                <div class="form-container">
                 <form id="questionForm" action="https://formspree.io/f/mgvbpgae" method="POST">
                     <div class="form-group">
-                        <label for="name">Name <span class="required">*</span> <span style="font-weight: normal; color: #666; font-size: 0.9em;">(We won't release)</span></label>
+                        <label for="name">Name <span class="required">*</span> <span style="font-weight: normal; color: #666; font-size: 0.9em;">(We won't release it)</span></label>
                         <input type="text" id="name" name="name" required>
                     </div>
                     
@@ -264,8 +292,8 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="question">Your Question <span class="required">*</span></label>
-                        <textarea id="question" name="question" placeholder="Please describe your energy policy question in detail..." required></textarea>
+                        <label for="question">Your Problem Description <span class="required">*</span></label>
+                        <textarea id="question" name="question" placeholder="Please describe your energy policy challenge in as much detail as possible..." required></textarea>
                     </div>
                     
                     <div class="form-group">
@@ -283,8 +311,9 @@
                         </select>
                     </div>
                     
-                    <button type="submit" class="submit-btn">Submit Question</button>
+                    <button type="submit" class="submit-btn">Submit Problem Description</button>
                 </form>
+                </div>
             </div>
         </div>
         
@@ -297,12 +326,7 @@
 
     <script>
         document.getElementById('questionForm').addEventListener('submit', function(e) {
-            // If using Formspree or similar service, this will handle the submission
-            // The success message will show after successful submission
-            const form = e.target;
-            
-            // Show success message after form submission (if using AJAX)
-            // For now, the form will submit normally to the action URL
+            // Form will submit normally to Formspree
         });
     </script>
 </body>
