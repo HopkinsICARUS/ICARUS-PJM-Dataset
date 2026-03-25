@@ -55,17 +55,14 @@ Name,Planned (MW),Operating (MW),In Construction (MW),Operating and In Construct
 "Pittsylvania County, VA",800.0,0.0,0.0,0.0,800.0,PJM_Dom
 "Montgomery County, PA",0.0,25.2,0.0,25.2,25.2,PJM_EMAC
 "Berks County, PA",0.0,7.0,0.0,7.0,7.0,PJM_WMAC
-"Covington city, VA",0.0,0.5,0.0,0.5,0.5,PJM_Dom
 "Baltimore city, MD",0.0,59.5,0.0,59.5,59.5,PJM_SMAC
 "King George County, VA",900.0,0.0,0.0,0.0,900.0,PJM_Dom
 "Luzerne County, PA",940.0,98.0,122.0,220.0,1160.0,PJM_WMAC
 "Licking County, OH",1601.0,601.0,413.0,1014.0,2615.0,PJM_West
 "DeKalb County, IL",360.0,260.0,60.0,320.0,680.0,PJM_COMD
 "Middlesex County, NJ",32.0,183.93,12.0,195.93,227.93,PJM_EMAC
-"Chesterfield County, VA",610.0,44.8,50.0,94.8,704.8,PJM_Dom
 "Prince William County, VA",5159.0,1675.4,1070.0,2745.4,7904.4,PJM_Dom
 "Delaware County, OH",67.5,10.5,0.0,10.5,78.0,PJM_West
-"Wise County, VA",35.0,10.0,0.0,10.0,45.0,PJM_West
 "Beaver County, PA",0.0,120.0,0.0,120.0,120.0,PJM_ATSI
 "Carbon County, PA",0.0,80.0,0.0,80.0,80.0,PJM_WMAC
 "Berrien County, MI",300.0,0.0,0.0,0.0,300.0,PJM_West
@@ -76,7 +73,6 @@ Name,Planned (MW),Operating (MW),In Construction (MW),Operating and In Construct
 "Union County, OH",140.0,250.0,80.0,330.0,470.0,PJM_ATSI
 "Warren County, OH",0.0,13.7,0.0,13.7,13.7,PJM_West
 "Stark County, OH",0.0,1.5,221.0,222.5,222.5,PJM_ATSI
-"Fairfax County, VA",272.7,338.4,334.0,672.4,945.1,PJM_Dom
 "Perry County, OH",26.0,24.0,0.0,24.0,50.0,PJM_West
 "Norfolk city, VA",0.0,0.75,0.0,0.75,0.75,PJM_Dom
 "Erie County, OH",190.0,0.0,96.0,96.0,286.0,PJM_ATSI
@@ -87,7 +83,6 @@ Name,Planned (MW),Operating (MW),In Construction (MW),Operating and In Construct
 "Lehigh County, PA",0.0,12.35,0.0,12.35,12.35,PJM_WMAC
 "Sussex County, VA",600.0,0.0,0.0,0.0,600.0,PJM_Dom
 "Boone County, KY",0.0,4.0,0.0,4.0,4.0,PJM_West
-"Prince William County, VA",5159.0,1675.4,1070.0,2745.4,7904.4,PJM_Dom
 "Mercer County, NJ",0.0,28.0,0.0,28.0,28.0,PJM_EMAC
 "DuPage County, IL",146.0,314.85,191.0,505.85,651.85,PJM_COMD
 "Venango County, PA",0.0,83.5,0.0,83.5,83.5,PJM_PENE

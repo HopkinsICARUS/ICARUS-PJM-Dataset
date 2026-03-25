@@ -59,7 +59,6 @@ Name,Planned (MW),Operating (MW),In Construction (MW),Operating and In Construct
 "Fauquier County, VA",1050.0,12.0,0.0,12.0,1062.0,PJM_Dom
 "McLennan County, TX",500.0,1.3,0.0,1.3,501.3,ERC_REST
 "Capitol Planning Region, CT",44.0,1.0,0.0,1.0,45.0,NENG_CT
-"Capitol Planning Region, CT",44.0,1.0,0.0,1.0,45.0,NENG_CT
 "Cass County, TX",0.0,40.0,0.0,40.0,40.0,SPP_WEST
 "Volusia County, FL",0.0,0.5,0.0,0.5,0.5,FRCC
 "Clark County, NV",414.0,426.33,0.0,426.33,840.33,WECC_SNV
@@ -239,7 +238,6 @@ Name,Planned (MW),Operating (MW),In Construction (MW),Operating and In Construct
 "Berkeley County, SC",230.0,310.0,0.0,310.0,540.0,S_VACA
 "Reeves County, TX",0.0,207.0,79.0,286.0,286.0,ERC_WEST
 "Westchester County, NY",0.0,9.1,0.0,9.1,9.1,NY_Z_G-I
-"Covington city, VA",0.0,0.5,0.0,0.5,0.5,PJM_Dom
 "Baltimore city, MD",0.0,59.5,0.0,59.5,59.5,PJM_SMAC
 "Wood County, WI",0.0,0.0,20.0,20.0,20.0,MIS_WUMS
 "Duval County, TX",50.0,0.0,50.0,50.0,100.0,ERC_REST
@@ -263,7 +261,6 @@ Name,Planned (MW),Operating (MW),In Construction (MW),Operating and In Construct
 "Navarro County, TX",400.0,400.0,200.0,600.0,1000.0,ERC_REST
 "Middlesex County, NJ",32.0,183.93,12.0,195.93,227.93,PJM_EMAC
 "St. Louis County, MN",0.0,1.3,0.0,1.3,1.3,MIS_MNWI
-"Chesterfield County, VA",610.0,44.8,50.0,94.8,704.8,PJM_Dom
 "Guilford County, NC",280.0,49.2,20.0,69.2,349.2,S_VACA
 "Prince William County, VA",5159.0,1675.4,1070.0,2745.4,7904.4,PJM_Dom
 "Sedgwick County, KS",0.0,0.24,0.0,0.24,0.24,SPP_N
@@ -272,7 +269,6 @@ Name,Planned (MW),Operating (MW),In Construction (MW),Operating and In Construct
 "Sherman County, TX",0.0,0.5,0.0,0.5,0.5,SPP_SPS
 "Broward County, FL",0.0,6.65,0.0,6.65,6.65,FRCC
 "Delaware County, OH",67.5,10.5,0.0,10.5,78.0,PJM_West
-"Wise County, VA",35.0,10.0,0.0,10.0,45.0,PJM_West
 "Upton County, TX",0.0,280.0,0.0,280.0,280.0,ERC_WEST
 "Winkler County, TX",150.0,0.0,150.0,150.0,300.0,ERC_WEST
 "Taylor County, TX",1000.0,0.0,1412.0,1412.0,2412.0,ERC_WEST
@@ -314,7 +310,6 @@ Name,Planned (MW),Operating (MW),In Construction (MW),Operating and In Construct
 "Tippecanoe County, IN",0.0,0.5,0.0,0.5,0.5,MIS_INKY
 "Madison County, IA",0.0,0.0,40.0,40.0,40.0,MIS_IA
 "Stark County, OH",0.0,1.5,221.0,222.5,222.5,PJM_ATSI
-"Fairfax County, VA",272.7,338.4,334.0,672.4,945.1,PJM_Dom
 "Perry County, OH",26.0,24.0,0.0,24.0,50.0,PJM_West
 "Andrews County, TX",0.0,105.0,100.0,205.0,205.0,ERC_WEST
 "Marion County, IN",0.0,13.95,0.0,13.95,13.95,MIS_INKY
@@ -359,7 +354,6 @@ Name,Planned (MW),Operating (MW),In Construction (MW),Operating and In Construct
 "Sullivan County, IN",115.0,0.0,0.0,0.0,115.0,MIS_INKY
 "Boone County, KY",0.0,4.0,0.0,4.0,4.0,PJM_West
 "Douglas County, CO",0.0,74.99,22.5,97.49,97.49,WECC_CO
-"Prince William County, VA",5159.0,1675.4,1070.0,2745.4,7904.4,PJM_Dom
 "Valencia County, NM",0.0,230.0,0.0,230.0,230.0,WECC_NM
 "Yates County, NY",0.0,80.0,0.0,80.0,80.0,NY_Z_C&E
 "Dorchester County, SC",800.0,0.0,100.0,100.0,900.0,S_VACA
