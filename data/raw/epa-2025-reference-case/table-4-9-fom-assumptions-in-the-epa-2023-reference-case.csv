@@ -1,0 +1,65 @@
+Plant Type,SO2 Control,NOx Control,Hg Control,Age of Unit,FOM (2022$/kW-Yr)
+Biomass,--,--,--,All Years,169.3
+Biomass,--,--,--,0 to 40 Years,34.1
+Biomass,--,--,--,40 to 50 Years,39.0
+Biomass,--,--,--,Greater than 50 Years,50.1
+Coal Steam,No SO2 Control,No NOx Control,No Hg Control,0 to 40 Years,36.1
+Coal Steam,No SO2 Control,ACI,,40 to 50 Years,39.1 - 39.5
+Coal Steam,No SO2 Control,ACI,,Greater than 50 Years,50.2 - 51.4
+Coal Steam,No SO2 Control,SCR,ACI,40 to 50 Years,40.0 - 40.1
+Coal Steam,No SO2 Control,SNCR,ACI,41.2,51.2 - 52.5
+Coal Steam,Dry FGD,No NOx Control,No Hg Control,0 to 40 Years,46.2
+Coal Steam,Dry FGD,No NOx Control,ACI,0 to 40 Years,44.0 - 57.6
+Coal Steam,Dry FGD,No NOx Control,ACI,40 to 50 Years,45.8 - 62.1
+Coal Steam,Dry FGD,No NOx Control,ACI,Greater than 50 Years,70.7
+Coal Steam,Dry FGD,SCR,No Hg Control,Greater than 50 Years,67.5
+Coal Steam,Dry FGD,SCR,ACI,0 to 40 Years,41.5 - 60.5
+Coal Steam,Dry FGD,SCR,ACI,40 to 50 Years,47.2 - 48.8
+Coal Steam,Dry FGD,SCR,ACI,Greater than 50 Years,59.5 - 65.7
+Coal Steam,Dry FGD,SNCR,No Hg Control,0 to 40 Years,46.1 - 56.7
+Coal Steam,Dry FGD,SNCR,No Hg Control,40 to 50 Years,45.6 - 56.9
+Coal Steam,Dry FGD,SNCR,No Hg Control,Greater than 50 Years,59.0
+Coal Steam,Dry FGD,SNCR,ACI,0 to 40 Years,43.8
+Coal Steam,Dry FGD,SNCR,ACI,40 to 50 Years,59.3
+Coal Steam,Wet FGD,No NOx Control,No Hg Control,0 to 40 Years,49.7 - 50.1
+Coal Steam,Wet FGD,No NOx Control,No Hg Control,Greater than 50 Years,61.1 - 70.1
+Coal Steam,Wet FGD,No NOx Control,ACI,0 to 40 Years,45.0 - 45.7
+Coal Steam,Wet FGD,No NOx Control,ACI,40 to 50 Years,48.4 - 66.7
+Coal Steam,Wet FGD,No NOx Control,ACI,Greater than 50 Years,59.6 - 81.7
+Coal Steam,Wet FGD,SCR,No Hg Control,0 to 40 Years,43.9 - 46.6
+Coal Steam,Wet FGD,SCR,No Hg Control,40 to 50 Years,47.5 - 52.5
+Coal Steam,Wet FGD,SCR,No Hg Control,Greater than 50 Years,58.5 - 82.1
+Coal Steam,Wet FGD,SCR,ACI,0 to 40 Years,43.3 - 56.9
+Coal Steam,Wet FGD,SCR,ACI,40 to 50 Years,48.8 - 52.4
+Coal Steam,Wet FGD,SCR,ACI,Greater than 50 Years,60.0 - 67.1
+Coal Steam,Wet FGD,SNCR,No Hg Control,0 to 40 Years,45.7 - 45.8
+Coal Steam,Wet FGD,SNCR,No Hg Control,40 to 50 Years,68.3
+Coal Steam,Wet FGD,SNCR,No Hg Control,Greater than 50 Years,63.2 - 82.0
+Coal Steam,Wet FGD,SNCR,ACI,40 to 50 Years,47.9 - 60.3
+Coal Steam,Wet FGD,SNCR,ACI,Greater than 50 Years,60.6 - 69.0
+Coal Steam,DSI,No NOx Control,No Hg Control,0 to 40 Years,52.7
+Coal Steam,DSI,No NOx Control,ACI,40 to 50 Years,39.7 - 40.3
+Coal Steam,DSI,No NOx Control,ACI,Greater than 50 Years,55.9 - 65.0
+Combined Cycle,No SO2 Control,No NOx Control,No Hg Control,-,34.2
+Combined Cycle,No SO2 Control,SCR,No Hg Control,-,34.4 - 37.6
+Combustion Turbine,No SO2 Control,No NOx Control,No Hg Control,-,22.3
+Combustion Turbine,No SO2 Control,SCR,No Hg Control,-,22.8 - 27.2
+Combustion Turbine,No SO2 Control,SNCR,No Hg Control,-,22.3
+Fuel Cell,--,--,--,All Years,34.8
+Geothermal,--,--,--,All Years,112.5
+Hydro,--,--,--,All Years,18.2
+Integrated Gasification Combined Cycle,No SO2 Control,No NOx Control,--,All Years,123.1
+Landfill Gas / Municipal Solid Waste,--,--,--,All Years,211.6
+Oil/gas Steam,No SO2 Control,No NOx Control,No Hg Control,0 to 40 Years,20.4
+Oil/gas Steam,No SO2 Control,No NOx Control,No Hg Control,40 to 50 Years,31.0
+Oil/gas Steam,No SO2 Control,No NOx Control,No Hg Control,Greater than 50 Years,40.3
+Oil/gas Steam,No SO2 Control,SCR,No Hg Control,0 to 40 Years,21.3 - 24.3
+Oil/gas Steam,No SO2 Control,SCR,No Hg Control,40 to 50 Years,34.7 - 34.7
+Oil/gas Steam,No SO2 Control,SCR,No Hg Control,Greater than 50 Years,40.7 - 43.2
+Oil/gas Steam,No SO2 Control,SNCR,No Hg Control,0 to 40 Years,20.4 - 22.3
+Oil/gas Steam,No SO2 Control,SNCR,No Hg Control,40 to 50 Years,31.1
+Oil/gas Steam,No SO2 Control,SNCR,No Hg Control,Greater than 50 Years,40.5 - 41.4
+Pumped Storage,--,--,--,All Years,20.7
+Solar Photovoltaics,--,--,--,All Years,18.7
+Solar Thermal,--,--,--,All Years,91.9
+Wind,--,--,--,All Years,30.0

@@ -25,7 +25,7 @@ REGION_PREFIX = "PJM"
 # --- NEW SETTING ---
 # Choose which data center capacity to plot.
 # Options: "Operating", "In Construction", "Planned", "Operating + In Construction", "Planned + In Construction", "Total"
-DC_CAPACITY_TO_PLOT = "Operating + In Construction"
+DC_CAPACITY_TO_PLOT = "Total"
 # --- END NEW SETTING ---
 
 
@@ -46,22 +46,27 @@ def generate_colormap(N):
 
 # --- 1. LOAD GEOSPATIAL BASEMAP DATA ---
 print("Loading geospatial data...")
-us_states_path = Path(Path.cwd(), "data", "raw", "epa-2023-reference-case", "cb_2018_us_state_500k.zip")
+us_states_path = Path(Path.cwd(), "data", "raw", "epa-2025-reference-case", "cb_2018_us_state_500k.zip")
 us_states = gpd.read_file(us_states_path)
 states2drop_names = ["Alaska", "Hawaii", "Puerto Rico", "Commonwealth of the Northern Mariana Islands", "United States Virgin Islands", "American Samoa", "Guam"]
 states2drop_fp = us_states.loc[us_states["NAME"].isin(states2drop_names), "STATEFP"].values
 us_states = us_states.loc[~us_states["NAME"].isin(states2drop_names)]
-us_counties_path = Path(Path.cwd(), "data", "raw", "epa-2023-reference-case", "cb_2018_us_county_500k.zip")
+us_counties_path = Path(Path.cwd(), "data", "raw", "epa-2025-reference-case", "cb_2018_us_county_500k.zip")
 us_counties = gpd.read_file(us_counties_path)
 us_counties = us_counties.dropna()
 us_counties = us_counties[~us_counties["STATEFP"].isin(states2drop_fp)]
-epa_ipm_shape_path = Path(Path.cwd(), "data", "raw", "epa-2023-reference-case", "ipm_v6_regions.zip")
+epa_ipm_shape_path = Path(Path.cwd(), "data", "raw", "epa-2025-reference-case", "ipm_v6_regions.zip")
 epa = gpd.read_file(epa_ipm_shape_path, crs="EPSG:4326")
 epa = epa.to_crs(us_states.crs)
 
+# --- DYNAMIC ZONE COUNT CALCULATION ---
+# Calculate the number of zones dynamically based on the active prefix
+num_prefix_zones = epa[epa['IPM_Region'].str.startswith(REGION_PREFIX, na=False)]['IPM_Region'].nunique()
+print(f"Detected {num_prefix_zones} unique zones for prefix '{REGION_PREFIX}'.")
+
 # --- 1b. LOAD AND PROCESS DATA CENTER DATA ---
 print("Loading and processing data center data...")
-dc_data_path = Path(Path.cwd(), "data", "processed", "datacenter_cap_all.csv")
+dc_data_path = Path(Path.cwd(), "data", "processed", "datacenter_cap_all_58_zone_speed2power.csv")
 dc_plot_gdf = None
 dc_legend_title = "Data Center Capacity" # Default title
 
@@ -151,7 +156,7 @@ except Exception as e:
 print("Processing transmission capacity data...")
 epa_centroid = epa.copy()
 epa_centroid["CENTROID"] = epa_centroid.geometry.centroid
-epa_trans_limits = pd.read_csv(Path(Path.cwd(), "data", "processed", "transport_cap_all.csv"))
+epa_trans_limits = pd.read_csv(Path(Path.cwd(), "data", "processed", "transport_cap_all_78zone.csv"))
 epa_trans_limits.rename({"TTC_Capacity_2028": "MW"}, axis=1, inplace=True)
 epa_trans_limits = epa_trans_limits.loc[(epa_trans_limits["From"].isin(np.unique(epa.IPM_Region))) & (epa_trans_limits["To"].isin(np.unique(epa.IPM_Region)))]
 from_to = epa_trans_limits["From"] + "#" + epa_trans_limits["To"]
@@ -199,10 +204,19 @@ print("Generating plot...")
 fig, (ax_main, ax_inset) = plt.subplots(
     nrows=2,
     ncols=1,
-    figsize=(12, 18),
-    gridspec_kw={'height_ratios': [3, 2]}
+    figsize=(14, 11),  
+    # Increase 'hspace' to push the bottom plot further down
+    gridspec_kw={'height_ratios': [1.5, 1], 'hspace': 0.15} 
 )
-fig.suptitle(f"US Transmission and Data Center Capacity Map with {REGION_PREFIX} Inset", fontsize=16)
+
+# Place main title lower into padding whitespace with halo logic
+fig.suptitle(
+    f"US Transmission and Data Center Capacity Map with {REGION_PREFIX} ({num_prefix_zones} Zone) Inset", 
+    fontsize=16,
+    y=0.92,
+    ha='center', va='center',
+    path_effects=[pe.withStroke(linewidth=3, foreground='white', alpha=0.9)]
+)
 
 # --- Plot basemap on the TOP axes (ax_main) ---
 us_counties.boundary.plot(ax=ax_main, edgecolor="grey", linewidth=0.2, zorder=2)
@@ -257,8 +271,14 @@ if dc_plot_gdf is not None:
     # --- MODIFICATION: Use dynamic legend title ---
     ax_main.legend(handles=dc_legend_handles, loc='lower left', title=dc_legend_title)
 
-ax_main.set_title("National View", loc="center")
+# Use negative padding to pull the title down closer to the map
+ax_main.set_title("National View", loc="center", pad=-20)
 ax_main.set_axis_off()
+
+# Force the main axes to tightly hug the continental US limits
+main_bounds = us_states.total_bounds
+ax_main.set_xlim(main_bounds[0], main_bounds[2])
+ax_main.set_ylim(main_bounds[1], main_bounds[3])
 
 # --- Plot data for the selected region on the BOTTOM axes (ax_inset) ---
 print(f"Creating {REGION_PREFIX} inset plot...")
@@ -370,9 +390,11 @@ if dc_inset_gdf is not None and not dc_inset_gdf.empty:
 inset_region_names = sorted(inset_regions['IPM_Region'].unique())
 region_legend_elements = [Patch(facecolor=color_map_dict[name], edgecolor='black', label=name)
                           for name in inset_region_names]
+
+# Using dynamic zone counting in the legend
 ax_inset.legend(handles=region_legend_elements,
                 loc='upper left',
-                title=f'{REGION_PREFIX} Regions',
+                title=f'{REGION_PREFIX} Regions ({num_prefix_zones} Zones)',
                 fontsize='medium',
                 bbox_to_anchor=(1.02, 1),
                 borderaxespad=0.)
@@ -382,14 +404,16 @@ x_margin, y_margin = (bounds[2] - bounds[0]) * 0.1, (bounds[3] - bounds[1]) * 0.
 ax_inset.set_xlim(bounds[0] - x_margin, bounds[2] + x_margin)
 ax_inset.set_ylim(bounds[1] - y_margin, bounds[3] + y_margin)
 
-ax_inset.set_title(f"{REGION_PREFIX} Region Detail", loc="center")
+# Using dynamic zone counting in the inset title
+ax_inset.set_title(f"{REGION_PREFIX} Region Detail ({num_prefix_zones} Zones)", y=1.05)
 ax_inset.set_axis_off()
 for spine in ax_inset.spines.values():
     spine.set_edgecolor('black')
     spine.set_linewidth(1.0)
 
 # --- Final plot adjustments ---
-plt.tight_layout(rect=[0, 0, 0.85, 0.95])
+# Let the maps use more of the right-side space
+plt.tight_layout(rect=[0, 0, 0.92, 1.0])
 
 # --- Save the figure ---
 output_dir = Path(Path.cwd(), "data", "figures")
@@ -398,6 +422,8 @@ output_dir.mkdir(parents=True, exist_ok=True)
 # --- MODIFICATION: Create a dynamic output filename ---
 # Create a "safe" string for the filename from the capacity choice
 safe_capacity_name = DC_CAPACITY_TO_PLOT.lower().replace(" ", "_").replace("+", "plus")
+
+# Include both the zone count and the capacity name in the final output file
 output_path = output_dir / f"epa_ipm_trans_limits_{REGION_PREFIX}_dc_{safe_capacity_name}.png"
 
 plt.savefig(output_path, dpi=300, bbox_inches='tight', pad_inches=0.1, facecolor='w')

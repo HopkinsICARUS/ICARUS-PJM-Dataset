@@ -19,7 +19,7 @@ def make_load_data(path2file: Path, sheet_name: str, region_prefix: Optional[str
     if "Unnamed: 0" in dt.columns:
         dt.drop("Unnamed: 0", axis=1, inplace=True)
 
-    # Pre-filter by region prefix if provided to simplify processing # Unliked Other files where "Region Name" is used, here it's just "Region"
+    # Pre-filter by region prefix if provided to simplify processing 
     if region_prefix and "Region" in dt.columns:
         dt = dt[dt["Region"].str.startswith(region_prefix, na=False)].copy()
 
@@ -107,12 +107,12 @@ def make_res_data(path2file: Path, sheet_name: str, res: str, region_prefix: Opt
     return out
 
 
-def write_transport_splits(dt_transport_cap: pd.DataFrame, outdir: Path, prefix: str):
+def write_transport_splits(dt_transport_cap: pd.DataFrame, outdir: Path, prefix: str, num_zones: int):
     """
     Splits transport capacity data based on a region prefix and saves them to a dedicated subfolder.
     """
-    # The prefix now defines a subfolder for the output files
-    output_dir = outdir / prefix
+    # The prefix now defines a dynamically named subfolder for the output files
+    output_dir = outdir / f"{prefix} {num_zones} Zone"
     output_dir.mkdir(parents=True, exist_ok=True)
 
     def _starts_with_prefix(x: object, p: str) -> bool:
@@ -125,22 +125,22 @@ def write_transport_splits(dt_transport_cap: pd.DataFrame, outdir: Path, prefix:
     lines = dt_transport_cap[is_from & is_to].copy()
     lines.to_csv(output_dir / "lines.csv", index=False)
 
-    # 2) Imports => generators_interface
+    # 2) Imports => interface_imports
     generators_interface = dt_transport_cap[~is_from & is_to].copy()
-    generators_interface.to_csv(output_dir / "generators_interface.csv", index=False)
+    generators_interface.to_csv(output_dir / "interface_imports.csv", index=False)
 
-    # 3) Exports => loads_interface
+    # 3) Exports => interface_exports
     loads_interface = dt_transport_cap[is_from & ~is_to].copy()
-    loads_interface.to_csv(output_dir / "loads_interface.csv", index=False)
+    loads_interface.to_csv(output_dir / "interface_exports.csv", index=False)
 
     print(f"Successfully split transport capacity data into '{output_dir}'.")
 
 
-def get_output_path(directory: Path, base_name: str, prefix: Optional[str]) -> Path:
+def get_output_path(directory: Path, base_name: str, prefix: Optional[str], num_zones: Optional[int] = None) -> Path:
     """Constructs a CSV filepath, creating a subdirectory if a prefix is provided."""
     output_dir = directory
-    if prefix:
-        output_dir = directory / prefix
+    if prefix and num_zones is not None:
+        output_dir = directory / f"{prefix} {num_zones} Zone"
     
     # Ensure the target directory exists
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -151,57 +151,66 @@ def get_output_path(directory: Path, base_name: str, prefix: Optional[str]) -> P
 def main():
     """Main script to process and save EPA Zonal Model data."""
     # --- CONFIGURATION ---
-    # Set a prefix to filter for a specific region (e.g., "PJM").
-    # Set to "", which is None, to process all regions.
     REGION_PREFIX = "PJM"
 
     # --- SETUP ---
     data_dir = Path(Path.cwd(), "data/processed")
-    raw_dir = Path(Path.cwd(), "data/raw/epa-2023-reference-case")
+    raw_dir = Path(Path.cwd(), "data/raw/epa-2025-reference-case")
     data_dir.mkdir(parents=True, exist_ok=True)
     
     print(f"Processing data. Active region filter: {REGION_PREFIX or 'None'}")
-    if REGION_PREFIX:
-        print(f"Filtered output will be saved in: {data_dir / REGION_PREFIX}")
 
     # --- PROCESSING ---
     dt_load = make_load_data(
-        path2file=raw_dir / "table-2-2-load-curves-used-in-epa-2023-reference-case.xlsx",
+        path2file=raw_dir / "table-2-2-load-curves-used-in-the-epa-2025-reference-case.xlsx",
         sheet_name="Table 2-2",
         region_prefix=REGION_PREFIX,
     )
-    dt_load.to_csv(get_output_path(data_dir, "load_profiles", REGION_PREFIX), index=False)
+    
+    # Calculate the dynamically active number of zones based on filtered load data columns
+    # (Subtracting "Time", "Month", "Day", "Hour" metadata columns)
+    num_prefix_zones = len(dt_load.columns) - 4 if not dt_load.empty else 0
+
+    if REGION_PREFIX:
+        print(f"Filtered output will be saved in: {data_dir / f'{REGION_PREFIX} {num_prefix_zones} Zone'}")
+
+    dt_load.to_csv(get_output_path(data_dir, "load_profiles", REGION_PREFIX, num_prefix_zones), index=False)
 
     dt_transport_cap = make_transport_limit_data(
         path2file=raw_dir / "table-3-27-annual-transmission-capabilities-of-u.s.-model-regions-in-epa-2023-reference-case.xlsx",
         sheet_name="Table 3-27",
         snapshot_year=2028,
     )
-    # Always save the full, unfiltered transport capacity data
-    dt_transport_cap.to_csv(data_dir / "transport_cap_all.csv", index=False)
+    
+    # Calculate total unique global zones dynamically
+    total_zones = pd.concat([dt_transport_cap["From"], dt_transport_cap["To"]]).nunique()
+    
+    # Always save the full, unfiltered transport capacity data dynamically named
+    dt_transport_cap.to_csv(data_dir / f"transport_cap_all_{total_zones}zone.csv", index=False)
+    
     if REGION_PREFIX:
-        write_transport_splits(dt_transport_cap, data_dir, prefix=REGION_PREFIX)
+        write_transport_splits(dt_transport_cap, data_dir, prefix=REGION_PREFIX, num_zones=num_prefix_zones)
 
     # Process generator data
     dt_generators = make_generator_data(
-        path2file=raw_dir / "needs-rev-06-06-2024.xlsx",
+        path2file=raw_dir / "needs-for-2025-reference-case.xlsx",
         sheet_name="NEEDS_Active",
         region_prefix=REGION_PREFIX,
     )
-    dt_generators.to_csv(get_output_path(data_dir, "generators", REGION_PREFIX), index=False)
+    dt_generators.to_csv(get_output_path(data_dir, "generators", REGION_PREFIX, num_prefix_zones), index=False)
     
     dt_retirements = make_generator_data(
-        path2file=raw_dir / "needs-rev-06-06-2024.xlsx",
-        sheet_name="NEEDS_retireby2028",
+        path2file=raw_dir / "needs-for-2025-reference-case.xlsx",
+        sheet_name="NEEDS_Retiredby2028",
         region_prefix=REGION_PREFIX,
     )
-    dt_retirements.to_csv(get_output_path(data_dir, "generators_retirement_by_2028", REGION_PREFIX), index=False)
+    dt_retirements.to_csv(get_output_path(data_dir, "generators_retirement_by_2028", REGION_PREFIX, num_prefix_zones), index=False)
 
     # Process renewable energy data
     res_files = {
-        "generation_profiles_wind_onshore": ("table-4-37-wind-generation-profiles-in-epa-2023-reference-case-kwh-of-generation-per-mw-of-capacity.xlsx", "Onshore", "Wind"),
-        "generation_profiles_wind_offshore_fixed": ("table-4-37-wind-generation-profiles-in-epa-2023-reference-case-kwh-of-generation-per-mw-of-capacity.xlsx", "Offshore Fixed", "Wind"),
-        "generation_profiles_wind_offshore_floating": ("table-4-37-wind-generation-profiles-in-epa-2023-reference-case-kwh-of-generation-per-mw-of-capacity.xlsx", "Offshore Floating", "Wind"),
+        "generation_profiles_wind_onshore": ("table-4-37-wind-generation-profiles-in-the-epa-2025-reference-case-kwh-of-generation-per-mw-of-capacity.xlsx", "Onshore", "Wind"),
+        "generation_profiles_wind_offshore_fixed": ("table-4-37-wind-generation-profiles-in-the-epa-2025-reference-case-kwh-of-generation-per-mw-of-capacity.xlsx", "Offshore Fixed", "Wind"),
+        "generation_profiles_wind_offshore_floating": ("table-4-37-wind-generation-profiles-in-the-epa-2025-reference-case-kwh-of-generation-per-mw-of-capacity.xlsx", "Offshore Floating", "Wind"),
         "generation_profiles_solar": ("table-4-41-solar-photovoltaic-generation-profiles-in-epa-2023-reference-case-kwh-of-generation-per-mw-of-capacity.xlsx", "Table 4-41", "Solar"),
     }
 
@@ -212,7 +221,7 @@ def main():
             res=res_type,
             region_prefix=REGION_PREFIX,
         )
-        dt_res.to_csv(get_output_path(data_dir, name, REGION_PREFIX), index=False)
+        dt_res.to_csv(get_output_path(data_dir, name, REGION_PREFIX, num_prefix_zones), index=False)
 
     print("\nProcessing complete.")
 

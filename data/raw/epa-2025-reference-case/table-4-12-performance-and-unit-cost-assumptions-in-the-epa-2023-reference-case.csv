@@ -1,0 +1,53 @@
+Technology,Size (MW),First Year Available,Lead Time (Years),Availability (%),Vintage Year,Heat Rate (Btu/kWh),Capital (2022$/kW),Fixed O&M (2022$/kW/yr),Variable O&M (2022$/MWh)
+Combined Cycle - Single Shaft,418,2028,3,87,2028,6431,1118,15.87,2.87
+Combined Cycle - Single Shaft,418,2028,3,87,2030,6431,1096,15.87,2.87
+Combined Cycle - Single Shaft,418,2028,3,87,2035,6431,1054,15.87,2.87
+Combined Cycle - Single Shaft,418,2028,3,87,2040,6431,1012,15.87,2.87
+Combined Cycle - Single Shaft,418,2028,3,87,2045,6431,968,15.87,2.87
+Combined Cycle - Single Shaft,418,2028,3,87,2050-2055,6431,922,15.87,2.87
+Combined Cycle - Multi Shaft,1083,2028,3,87,2028,6370,989,13.73,3.1
+Combined Cycle - Multi Shaft,1083,2028,3,87,2030,6370,989,13.73,3.1
+Combined Cycle - Multi Shaft,1083,2028,3,87,2035,6370,932,13.73,3.1
+Combined Cycle - Multi Shaft,1083,2028,3,87,2040,6370,895,13.73,3.1
+Combined Cycle - Multi Shaft,1083,2028,3,87,2045,6370,856,13.73,3.1
+Combined Cycle - Multi Shaft,1083,2028,3,87,2050-2055,6370,816,13.73,3.1
+Combined Cycle with 90% CCS,377,2030,3,87,2028,7124,2605,31.06,6.57
+Combined Cycle with 90% CCS,377,2030,3,87,2030,7124,2539,31.06,6.57
+Combined Cycle with 90% CCS,377,2030,3,87,2035,7124,2396,31.06,6.57
+Combined Cycle with 90% CCS,377,2030,3,87,2040,7124,2252,31.06,6.57
+Combined Cycle with 90% CCS,377,2030,3,87,2045,7124,2105,31.06,6.57
+Combined Cycle with 90% CCS,377,2030,3,87,2050-2055,7124,1958,31.06,6.57
+Combustion Turbine - Industrial Frame,237,2028,2,92,2028,9905,717,18.35,5.29
+Combustion Turbine - Industrial Frame,237,2028,2,92,2030,9905,697,18.35,5.29
+Combustion Turbine - Industrial Frame,237,2028,2,92,2035,9905,665,18.35,5.29
+Combustion Turbine - Industrial Frame,237,2028,2,92,2040,9905,635,18.35,5.29
+Combustion Turbine - Industrial Frame,237,2028,2,92,2045,9905,604,18.35,5.29
+Combustion Turbine - Industrial Frame,237,2028,2,92,2050-2055,9905,572,18.35,5.29
+Combustion Turbine - Aeroderivative,105,2028,2,92,2028,9124,1182,18.35,5.06
+Combustion Turbine - Aeroderivative,105,2028,2,92,2030,9124,1148,18.35,5.06
+Combustion Turbine - Aeroderivative,105,2028,2,92,2035,9124,1096,18.35,5.06
+Combustion Turbine - Aeroderivative,105,2028,2,92,2040,9124,1047,18.35,5.06
+Combustion Turbine - Aeroderivative,105,2028,2,92,2045,9124,995,18.35,5.06
+Combustion Turbine - Aeroderivative,105,2028,2,92,2050-2055,9124,942,18.35,5.06
+Advanced Nuclear,1150,2030,6,90,2028,10447,6426,136.91,2.67
+Advanced Nuclear,1150,2030,6,90,2030,10447,6304,136.91,2.67
+Advanced Nuclear,1150,2030,6,90,2035,10447,5999,136.91,2.67
+Advanced Nuclear,1150,2030,6,90,2040,10447,5683,136.91,2.67
+Advanced Nuclear,1150,2030,6,90,2045,10447,5356,136.91,2.67
+Advanced Nuclear,1150,2030,6,90,2050-2055,10447,5026,136.91,2.67
+Small Modular Reactor,600,2030,6,95,2028,10447,7019,106.92,3.38
+Small Modular Reactor,600,2030,6,95,2030,10447,6886,106.92,3.38
+Small Modular Reactor,600,2030,6,95,2035,10447,6554,106.92,3.38
+Small Modular Reactor,600,2030,6,95,2040,10447,6210,106.92,3.38
+Small Modular Reactor,600,2030,6,95,2045,10447,5853,106.92,3.38
+Small Modular Reactor,600,2030,6,95,2050-2055,10447,5494,106.92,3.38
+Ultra-supercritical Coal without CCS,650,2028,4,85,2028,8638,3789,45.38,5.06
+Ultra-supercritical Coal without CCS,650,2028,4,85,2030,8638,3717,45.38,5.06
+Ultra-supercritical Coal without CCS,650,2028,4,85,2035,8638,3538,45.38,5.06
+Ultra-supercritical Coal without CCS,650,2028,4,85,2040,8638,3353,45.38,5.06
+Ultra-supercritical Coal without CCS,650,2028,4,85,2045,8638,3160,45.38,5.06
+Ultra-supercritical Coal without CCS,650,2028,4,85,2050-2055,8638,2967,45.38,5.06
+Notes:Ê,,,,,,,,,
+a Capital cost represents overnight capital cost.Ê,,,,,,,,,
+"b IPM regions in urban areas (NENGREST, NY_Z_J, NY_Z_K, PJM_SMAC, PJM_COMD, WEC_LADW, WEC_SDGE, and WEC_BANC) are assigned ""Combined Cycle - Single Shaft"" and ""Combustion Turbine - Aeroderivative"" technologies. All other regions are assigned ""Combined Cycle - Multi Shaft"" and ""Combustion Turbine - Industrial Frame"" technologies.Ê",,,,,,,,,
+c The ultra-supercritical coal plant without CCS is not compliant with 80 FR 64510.Ê,,,,,,,,,

@@ -1,0 +1,100 @@
+Plant Type,Year,Step,Upper Bound (MW),Adder ($/kW)
+Biomass,2028,1,"3,220",
+Biomass,2028,2,"5,614","1,347"
+Biomass,2028,3,No limit,"4,277"
+Biomass,2030,1,"1,296",
+Biomass,2030,2,"2,254","1,887"
+Biomass,2030,3,No limit,"5,994"
+Biomass,2035,1,"3,240",
+Biomass,2035,2,"5,634","1,796"
+Biomass,2035,3,No limit,"5,704"
+Coal Steam - UPC + UPC36 + UPC90,2028,1,"8,784",
+Coal Steam - UPC + UPC36 + UPC90,2028,2,"15,276","2,793"
+Coal Steam - UPC + UPC36 + UPC90,2028,3,No limit,"8,872"
+Coal Steam - UPC + UPC36 + UPC90,2030,1,"3,513",
+Coal Steam - UPC + UPC36 + UPC90,2030,2,"6,110","2,732"
+Coal Steam - UPC + UPC36 + UPC90,2030,3,No limit,"8,679"
+Coal Steam - UPC + UPC36 + UPC90,2035,1,"8,784",
+Coal Steam - UPC + UPC36 + UPC90,2035,2,"15,276","2,581"
+Coal Steam - UPC + UPC36 + UPC90,2035,3,No limit,"8,199"
+Combined Cycle + Combustion Turbine,2028,1,"109,085",
+Combined Cycle + Combustion Turbine,2028,2,"190,861",318
+Combined Cycle + Combustion Turbine,2028,3,No limit,"1,011"
+Combined Cycle + Combustion Turbine,2030,1,"44,255",
+Combined Cycle + Combustion Turbine,2030,2,"76,965",306
+Combined Cycle + Combustion Turbine,2030,3,No limit,971
+Combined Cycle + Combustion Turbine,2035,1,"110,637",
+Combined Cycle + Combustion Turbine,2035,2,"192,413",292
+Combined Cycle + Combustion Turbine,2035,3,No limit,926
+Fuel Cell,2028,1,"2,875",
+Fuel Cell,2028,2,"5,000","2,503"
+Fuel Cell,2028,3,No limit,"7,952"
+Fuel Cell,2030,1,"1,150",
+Fuel Cell,2030,2,"2,000","2,402"
+Fuel Cell,2030,3,No limit,"7,631"
+Fuel Cell,2035,1,"2,875",
+Fuel Cell,2035,2,"5,000","2,152"
+Fuel Cell,2035,3,No limit,"6,837"
+Geothermal,2028,1,643,
+Geothermal,2028,2,"1,119","3,148"
+Geothermal,2028,3,No limit,"10,000"
+Geothermal,2030,1,287,
+Geothermal,2030,2,498,"3,113"
+Geothermal,2030,3,No limit,"9,887"
+Geothermal,2035,1,833,
+Geothermal,2035,2,"1,449","3,113"
+Geothermal,2035,3,No limit,"9,887"
+Landfill Gas,2028,1,887,
+Landfill Gas,2028,2,"1,542",448
+Landfill Gas,2028,3,No limit,"1,424"
+Landfill Gas,2030,1,355,
+Landfill Gas,2030,2,617,745
+Landfill Gas,2030,3,No limit,"2,367"
+Landfill Gas,2035,1,887,
+Landfill Gas,2035,2,"1,542",694
+Landfill Gas,2035,3,No limit,"2,204"
+Nuclear,2028,1,"7,471",
+Nuclear,2028,2,"12,993","2,309"
+Nuclear,2028,3,No limit,"6,716"
+Nuclear,2030,1,"3,329",
+Nuclear,2030,2,"5,790","2,266"
+Nuclear,2030,3,No limit,"6,589"
+Nuclear,2035,1,"9,677",
+Nuclear,2035,2,"16,830","2,156"
+Nuclear,2035,3,No limit,"6,270"
+Solar Thermal,2028,1,"5,416",
+Solar Thermal,2028,2,"9,419","1,657"
+Solar Thermal,2028,3,No limit,"5,264"
+Solar Thermal,2030,1,"2,413",
+Solar Thermal,2030,2,"4,197","1,454"
+Solar Thermal,2030,3,No limit,"4,617"
+Solar Thermal,2035,1,"7,016",
+Solar Thermal,2035,2,"12,201","1,402"
+Solar Thermal,2035,3,No limit,"4,452"
+Solar PV,2028,1,"41,328",
+Solar PV,2028,2,"107,753",299
+Solar PV,2028,3,No limit,949
+Solar PV,2030,1,"40,045",
+Solar PV,2030,2,"69,644",258
+Solar PV,2030,3,No limit,819
+Solar PV,2035,1,"116,411",
+Solar PV,2035,2,"202,454",179
+Solar PV,2035,3,No limit,567
+Onshore Wind,2028,1,"83,292",
+Onshore Wind,2028,2,"154,447",306
+Onshore Wind,2028,3,No limit,973
+Onshore Wind,2030,1,"42,897",
+Onshore Wind,2030,2,"74,604",244
+Onshore Wind,2030,3,No limit,775
+Onshore Wind,2035,1,"124,701",
+Onshore Wind,2035,2,"216,872",210
+Onshore Wind,2035,3,No limit,667
+Hydro,2028,1,"1,695",
+Hydro,2028,2,"3,770",669
+Hydro,2028,3,No limit,"2,126"
+Hydro,2030,1,"1,251",
+Hydro,2030,2,"2,176",669
+Hydro,2030,3,No limit,"2,126"
+Hydro,2035,1,"3,637",
+Hydro,2035,2,"6,326",669
+Hydro,2035,3,No limit,"2,126"

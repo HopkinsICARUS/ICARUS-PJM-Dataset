@@ -1,0 +1,9 @@
+Plant Type,Lifespan without Life Extension Expenditures (Years),Life Extension Cost (2022$/kW),Capital Cost of New Unit (2022$/kW),Life Extension Cost as % of New Unit Capital Cost
+Biomass,40,276,4201,6.6
+Coal Steam,40,221,3789,5.84
+Combined Cycle,30,90,989,9.06
+Combustion Turbine,30,260,717,36.3
+IC Engine,30,252,1914,13.2
+Oil/Gas Steam,40,190,3450,5.5
+IGCC,40,281,3789,7.4
+Notes: Life extension expenditures double the lifespan of the unit.,,,,

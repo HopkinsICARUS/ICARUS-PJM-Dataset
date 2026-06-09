@@ -1,0 +1,38 @@
+Capacity Type,SO2 Control,NOx Control,Hg Control,Variable O&M (2022$/mills/kWh)
+Biomass,--,--,--,8.05
+Coal Steam,No SO2 Control,No NOx Control,No Hg Control,1.72
+Coal Steam,No SO2 Control,No NOx Control,ACI,1.93 - 2.17
+Coal Steam,No SO2 Control,SCR,ACI,2.94 - 3.85
+Coal Steam,No SO2 Control,SNCR,ACI,2.68
+Coal Steam,Dry FGD,No NOx Control,No Hg Control,6.02
+Coal Steam,Dry FGD,SCR,No Hg Control,2.84 - 6.93
+Coal Steam,Dry FGD,SCR,ACI,4.21
+Coal Steam,Dry FGD,SNCR,No Hg Control,3.63 - 9.28
+Coal Steam,Dry FGD,SNCR,ACI,6.56 - 8.04
+Coal Steam,Wet FGD,No NOx Control,No Hg Control,3.84 - 6.51
+Coal Steam,Wet FGD,No NOx Control,ACI,2.90 - 6.86
+Coal Steam,Wet FGD,SCR,ACI,2.88 - 4.68
+Coal Steam,Wet FGD,SNCR,No Hg Control,3.83 - 9.47
+Coal Steam,Wet FGD,SNCR,ACI,3.71 - 9.48
+Coal Steam,DSI,No NOx Control,No Hg Control,3.10 - 8.79
+Coal Steam,DSI,No NOx Control,ACI,3.63 - 14.75
+Coal Steam,DSI,SCR,ACI,6.39 - 6.43
+Coal Steam,DSI,SNCR,ACI,6.20 - 10.16
+Coal Steam,DSI,SNCR,ACI,8.09 - 12.51
+Coal Steam,DSI,SNCR,ACI,6.92 - 11.65
+Combined Cycle,No SO2 Control,No NOx Control,No Hg Control,4.55
+Combined Cycle,No SO2 Control,SCR,No Hg Control,4.62 - 5.28
+Combustion Turbine,No SO2 Control,No NOx Control,No Hg Control,5.22 - 7.38
+Combustion Turbine,No SO2 Control,SCR,No Hg Control,5.34 - 7.51
+Combustion Turbine,No SO2 Control,SNCR,No Hg Control,5.34 - 7.51
+Fuel Cell,--,--,--,0.67
+Geothermal,--,--,--,1.58
+Hydro,--,--,--,1.89
+IGCC,--,--,--,4.87
+Landfill Gas / Municipal Solid Waste,--,--,--,6.97
+Oil/gas Steam,No SO2 Control,No NOx Control,No Hg Control,1.00
+Oil/gas Steam,No SO2 Control,SCR,No Hg Control,1.12 - 1.68
+Oil/gas Steam,No SO2 Control,SNCR,No Hg Control,1 - 1.76
+Pumped Storage,--,--,--,0.01
+Solar,--,--,--,0.00
+Wind,--,--,--,0.00

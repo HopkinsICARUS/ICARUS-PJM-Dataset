@@ -21,7 +21,7 @@ We are committed to maintaining stakeholder privacy—we will not release reques
 </div>
 
 ## What are ICARUS deliverables?
-In addition to the policy-relevant assistance to energy policy makers (see above), ICARUS’s immediate goal is to create, release, and maintain datasets that directly inform infrastructure efficiency, reliability, and resiliency across the U.S. Our first priority is the [ICARUS PJM Dataset](data/output/PJM.zip), a high-resolution, regularly updated resource designed to illuminate some of the region’s most pressing challenges:
+In addition to the policy-relevant assistance to energy policy makers (see above), ICARUS’s immediate goal is to create, release, and maintain datasets that directly inform infrastructure efficiency, reliability, and resiliency across the U.S. Our first priority is the [ICARUS PJM Dataset](data/output/PJM%209%20Zone.zip), a high-resolution, regularly updated resource designed to illuminate some of the region’s most pressing challenges:
  - Data-center integration. Support reliable, just-in-time integration of the unprecedented growth in data centers across Virginia, Maryland, and Pennsylvania. See [WaPo](https://www.washingtonpost.com/business/2025/09/13/big-tech-data-centers-electricity-energy-power-texas-pennsylvania/f7ab00d8-9056-11f0-8260-0712daa5c125_story.html) for more details. 
  - Resource adequacy. Enable deeper analysis of supply capacity shortages that have driven unprecedented capacity price increases in PJM states. See [NYTimes](https://www.nytimes.com/2025/07/23/business/energy-environment/governors-pjm-electric-grid.html) for more details.
  - Policy guidance. Equip policymakers across 13 PJM states and the District of Columbia to steer transmission and generation investments that can contain rapid electricity rate growth. See [WSJ](https://www.wsj.com/finance/investing/higher-electricity-prices-arent-all-good-for-utilities-23113b91?reflink=desktopwebshare_permalink) for more details. 
@@ -62,13 +62,13 @@ This table provides a high-level comparison of this dataset with other common pu
 
 For convenience, pre-processed datasets for common regions are available for direct download.
 
-  * [**Download PJM Dataset (Base)**: 21 PJM zones over 9 IPM regions (with transfer limits)](data/output/PJM.zip)
+  * [**Download PJM Dataset (Base)**: US EPA-based 9 IPM regions](data/output/PJM%209%20Zone.zip)
+  * [**Download PJM Dataset (Base)**: PJM 21 zones](data/output/PJM%2021%20Zone.zip): Features full transmission topology based on NREL ReEDS county-level data. It includes existing generating units and interconnection queue projects (existing, planned, active, and cancelled) mapped directly to the 21 PJM load zones. Load profiles are based on the 2026 PJM Load Forecast Report.
   * **PJM Dataset in [GenX](https://github.com/GenXProject/GenX.jl) format**<sup>†</sup> 
     -  [**Download GenX_PJM_9zones_Base**: 9 IPM regions (with transfer limits)](data/output/GenX_PJM_9zones_Base.zip)
     -  [**Download GenX_PJM_9zones_DataCenters**: 9 IPM regions (with transfer limits)](data/output/GenX_PJM_9zones_DataCenters.zip)
-  * [**Download PJM Data Center Dataset**: 21 PJM zones over 9 IPM regions (with transfer limits)](data/processed/PJM/loads_datacenter_cap_zone.csv)
 
-<sup>†</sup> These versions are simplified, hard-coded conversions of the [**PJM Dataset (Base)**](data/output/PJM.zip) into the [**GenX**](https://github.com/GenXProject/GenX.jl) format, following examples from the official [GenX repository](https://github.com/GenXProject/GenX.jl), where the corresponding **licenses and attribution requirements** are provided.
+<sup>†</sup> These versions are simplified, hard-coded conversions of the [**PJM Dataset (Base)**](data/output/PJM%209%20Zone.zip) into the [**GenX**](https://github.com/GenXProject/GenX.jl) format, following examples from the official [GenX repository](https://github.com/GenXProject/GenX.jl), where the corresponding **licenses and attribution requirements** are provided.
 
 ### Future Enhancements
 
@@ -91,7 +91,7 @@ We plan to expand the repository's scope to include emerging challenges and regu
 
 ### Data Procurement & Processing
 
-The power system data is sourced directly from the **[U.S. EPA Power Sector Modeling: 2023 Reference Case](https://www.epa.gov/power-sector-modeling/2023-reference-case)** documentation and associated data files.
+The power system data is sourced directly from the **[U.S. EPA Power Sector Modeling: 2025 Reference Case](https://www.epa.gov/power-sector-modeling/2025-reference-case)** documentation and associated data files.
 
 The Python script (`src/make_data.py`) in this repository perform the following key tasks:
 1.  Load the raw Excel files provided by the EPA Power Sector Modeling platform.
@@ -133,17 +133,24 @@ When you run the script with a `REGION_PREFIX` (e.g., "PJM"), the following file
 | `generation_profiles_wind_offshore_floating.csv`          | Hourly generation profiles for floating offshore wind.                   |
 | `generation_profiles_solar.csv`                           | Hourly generation profiles for solar PV, stratified by class.            |
 
-The corresponding `_zone` files provide PJM’s **utility-level (zone-level) mappings** for all relevant resources, including:
+For the higher-resolution 21-zone representation, the **PJM 21 Zone dataset** provides utility-level mappings and resources directly. The [PJM 21 Zone.zip](data/output/PJM%2021%20Zone.zip) archive contains the following standardized files:
 
-  * `generators_zone.csv`
-  * `generators_retirement_by_2028_zone.csv`
-  * `generation_profiles_wind_onshore_zone.csv`
-  * `generation_profiles_wind_offshore_fixed_zone.csv`
-  * `generation_profiles_wind_offshore_floating_zone.csv`
-  * `generation_profiles_solar_zone.csv`
-  * `loads_datacenter_cap_zone.csv`
+| File Name | Description |
+| :--- | :--- |
+| `generators.csv` | Active generating units directly mapped to the 21 PJM zones. |
+| `cycle_projects_queue.csv` | Interconnection queue covering all current cycle projects (existing, planned, active, and cancelled). |
+| `lines.csv` | Internal bidirectional AC transmission capacity between the 21 PJM zones. |
+| `interface.csv` | Transmission capacities connecting PJM zones to external regions (MISO, NYISO, Southeast). |
+| `load_profiles_zone.csv` | Hourly load profiles mapped to the 21 utility zones. |
+| `dc_demand_zone.csv` | Projected data center demand capacity by zone. |
+| `lbw_af.csv` | Hourly availability factors for land-based wind resources. |
+| `osw_af.csv` | Hourly availability factors for offshore wind resources. |
+| `spv_af.csv` | Hourly availability factors for solar PV resources. |
+| `tech_cost_ef_elcc.csv` | Technology cost metrics, emission factors, and Effective Load-Carrying Capability (ELCC). |
 
-These mappings are constructed using multiple sources from PJM, most notably:
+These mappings are constructed using multiple sources, most notably:
+  * **IMMM-SFA Electricity Entity Boundaries** and **U.S. County Shapefiles** for county-to-zone spatial mapping.
+  * **NREL ReEDS NARIS 2024** for county-level transmission capacities.
   * [PJM Manual 18:PJM Capacity Market Revision: 61 Effective Date: July 23, 2025](https://www.pjm.com/-/media/DotCom/documents/manuals/m18.ashx)
   * The compiled cross-reference file: [`IPM Regions_State_Utilities.xlsx`](data/output/IPM%20Regions_State_Utilities.xlsx)
 
@@ -153,11 +160,11 @@ Together, these references provide a consistent, utility-level mapping between E
 
 ### Raw and Extracted Data
 
-Not all tables listed in the [Documentation for EPA’s Power Sector Modeling Platform 2023 Using the Integrated Planning Model 2023 Reference Case](https://www.epa.gov/system/files/documents/2025-02/epa-2023-reference-case.pdf) are provided as spreadsheets in the [Documentation for 2023 Reference Case](https://www.epa.gov/power-sector-modeling/documentation-2023-reference-case).
-To ensure completeness, we manually extracted the missing tables and saved them as CSV files in [`data/raw/epa-2023-reference-case`](data/raw/epa-2023-reference-case).
-For convenience and to serve as a one-stop repository, we also included the original spreadsheets that were already available from the [Documentation for 2023 Reference Case](https://www.epa.gov/power-sector-modeling/documentation-2023-reference-case).
+Not all tables listed in the [Documentation for EPA’s Power Sector Modeling Platform 2025 Using the Integrated Planning Model 2025 Reference Case](https://www.epa.gov/system/files/documents/2025-02/epa-2023-reference-case.pdf) are provided as spreadsheets in the [Documentation for 2025 Reference Case](https://www.epa.gov/power-sector-modeling/documentation-2025-reference-case).
+To ensure completeness, we manually extracted the missing tables and saved them as CSV files in [`data/raw/epa-2025-reference-case`](data/raw/epa-2025-reference-case).
+For convenience and to serve as a one-stop repository, we also included the original spreadsheets that were already available from the [Documentation for 2025 Reference Case](https://www.epa.gov/power-sector-modeling/documentation-2025-reference-case).
 
-Due to file size limitations, the folder [`data/raw/epa-2023-reference-case`](data/raw/epa-2023-reference-case) does **not** include the IPM v6 Regions shapefiles.
+Due to file size limitations, the folder [`data/raw/epa-2025-reference-case`](data/raw/epa-2025-reference-case) does **not** include the IPM v6 Regions shapefiles.
 Please manually download [`ipm_v6_regions.zip`](https://www.epa.gov/sites/production/files/2019-08/ipm_v6_regions.zip) and place it inside that directory.
 
 | Parameter                           | Source Document Tables                        |
